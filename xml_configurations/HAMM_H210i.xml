@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="roadCompactor" modName="FS22_HAMM_H20I_TFSG" typeName="tractor" xmlName="hamm_h11i">
+    <terraform>
+        <i3d parent="liebherrL538_front_component2" y="-0.25" z="3">
+            <node x="-1.5" />
+            <node x="-0.6" />
+            <node x="0.6" />
+            <node x="1.5" />
+        </i3d>
+        <modes>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <paint>
+        <i3d parent="liebherrL538_front_component2" y="-0.25" z="2.6">
+            <node x="-1.5" />
+            <node x="-0.6" />
+            <node x="0.6" />
+            <node x="1.5" />
+        </i3d>
+        <radius>2</radius>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

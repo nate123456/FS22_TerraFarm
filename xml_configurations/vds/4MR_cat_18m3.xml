@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="roadScraper" modName="FS22_4MR_Cat_18M3" typeName="CAT18M3" xmlName="Grader">
+    <terraform>
+        <i3d parent="0>4|0|0|0|0|0|0|0|1" y="-0.385" z="0.0185">
+            <node x="-1.9" />
+            <node x="-1.16" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="1.16" />
+            <node x="1.9" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>4|0|0|0|0|0|0|0|1" y="-0.6" z="0.3">
+            <node x="-1.85" z="0.05" />
+            <node x="-0.9" z="0.05" />
+            <node x="0.9" z="0.05" />
+            <node x="1.85" z="0.05" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="0>4|0|0|0|0|0|0|0|1" y="-0.46" z="0.6">
+            <!-- LEFT SIDE-->
+            <line
+                x1="3.8" y1="0" z1="-0.9"
+                x2="0" y2="0" z2="-0.5"
+            />
+                <!-- x1="3.8" y1="0" z1="-0.9"
+                x2="3.8" y2="0" z2="-1.4" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-3.8" y1="0" z1="-0.9"
+                x2="0" y2="0" z2="-0.5"
+            />
+                <!-- x1="-3.8" y1="0" z1="-0.9"
+                x2="-3.8" y2="0" z2="-1.4" -->
+        </i3d>
+        <mode>NORMAL</mode>
+        <radius>1.5</radius>
+    </discharge>
+    <rotation>
+        <i3d parent="0>4|0|0|0|0|0|0|0|1" />
+        <axis>2</axis>
+        <min>-45</min>
+        <max>45</max>
+        <threshold>20</threshold>
+        <offsetFactor>3.0</offsetFactor>
+    </rotation>
+    <paint>
+        <i3d parent="0>4|0|0|0|0|0|0|0|1" y="0.46" z="0.6">
+            <node x="-1.26" />
+            <node x="1.26" />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

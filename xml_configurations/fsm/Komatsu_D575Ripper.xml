@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="ripper" modName="FS22_Komatsu_575D_FSM" typeName="575ripper" xmlName="575ripper">
+    <terraform>
+        <i3d parent="0>0|2|0|0|0|0|0|1">
+            <node x="-0.55"  />
+            <node x="0"  />
+            <node x="0.55"  />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>LOWER</mode>
+        </modes>
+    </terraform>
+    <discharge>
+        <i3d parent="0>0|2|0|0|0|0|0|1" y="-0.46" z="0.6">
+            <line
+                x1="2" 
+                x2="0" 
+            />
+            <line
+                x1="-2" 
+                x2="0" 
+            />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+    </discharge>
+    <paint>
+        <i3d parent="0>0|2|0|0|0|0|0|1">
+            <node />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

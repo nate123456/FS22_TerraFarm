@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_CatD6T" typeName="CatD6T" xmlName="D6T">
+      <terraform>
+        <i3d parent="0>1|0|0" y="0" z="0">
+            <node x="2.3" y="-0.26" z="0.7" />
+            <node x="1.15" y="-0.26" z="0.7" />
+            <node x="0" y="-0.26" z="0.7" />
+            <node x="-1.15" y="-0.26" z="0.7" />
+            <node x="-2.3" y="-0.26" z="0.7" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>1|0|0" y="0" z="0">
+            <node x="2.3" y="-0.26" z="0.7" />
+            <node x="1.15" y="-0.26" z="0.7" />
+            <node x="0" y="-0.26" z="0.7" />
+            <node x="-1.15" y="-0.26" z="0.7" />
+            <node x="-2.3" y="-0.26" z="0.7" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="0>1|0|0" y="0" z="0">
+                <!-- LEFT SIDE-->
+            <line
+                x1="2.3" y1="-0.26" z1="0.7"
+                x2="0" y2="-0.26" z2="0.7"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-2.3" y1="-0.26" z1="0.7"
+                x2="0" y2="-0.26" z2="0.7"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+    </discharge>
+    <paint>
+        <i3d parent="0>1|0|0" y="0" z="0">
+            <node x="-2.3" />
+            <node x="2.3" />
+        </i3d>
+    </paint>
+</configuration>

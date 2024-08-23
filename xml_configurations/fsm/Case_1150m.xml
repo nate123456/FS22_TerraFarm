@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_Case_1150M_FSM" typeName="1150m" xmlName="1150M">
+      <terraform>
+        <i3d parent="levelerNode" y="-0" z="0">
+             <node x="-1.7" />
+            <node x="-1.2" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="1.2" />
+            <node x="1.7" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <node x="-1.7" z="0.05" />
+            <node x="-1.0" z="0.05" />
+            <node x="1.0" z="0.05" />
+            <node x="1.7" z="0.05" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="levelerNode" y="-0" z="0">
+                <!-- LEFT SIDE-->
+            <line
+                x1="2.3" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-2.3" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+    </discharge>
+    <paint>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <node x="-1.26" />
+            <node x="1.26" />
+        </i3d>
+    </paint>
+</configuration>

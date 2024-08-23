@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="roadCompactor" modName="FS22_Bomag_BPR_5055D_FSM" typeName="PlateCompactor" xmlName="PlateCompacor">
+    <terraform>
+        <i3d parent="terraNode" y="0" z="0">
+            <node x="-0.306" />
+            <node x="-0.1" />
+            <node x="0.1" />
+            <node x="0.306" />
+        </i3d>
+        <modes>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <paint>
+        <i3d parent="terraNode" y="0" z="0">
+            <node x="-0.306" />
+            <node x="-0.1" />
+            <node x="0.1" />
+            <node x="0.306" />
+        </i3d>
+        <radius>2</radius>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

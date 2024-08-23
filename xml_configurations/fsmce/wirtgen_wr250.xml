@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="groundRipper" modName="FS22_WirtgenWR250" typeName="Wirtgen250" xmlName="WirtgenWR250">
+    <terraform>
+        <i3d parent="0>5|9|4" y="0" z="0">
+            <node x="0.44" />
+            <node x="0.2" />
+            <node x="0" />
+            <node x="-0.2" />
+            <node x="-0.44" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+        <radius>2.5</radius>
+    </terraform>
+    <collision>
+        <i3d parent="0>5|9|4" y="0" z="0.2">
+            <node x="0.44" />
+            <node x="0.2" />
+            <node x="0" />
+            <node x="-0.2" />
+            <node x="-0.44" />
+
+            <node x="0.44" y="-0.1" z="-1" />
+            <node x="-0.44" y="-0.1" z="-1" />
+        </i3d>
+    </collision>
+    <paint>
+        <radius>3</radius>
+        <i3d parent="0>5|9|4" y="0" z="0">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

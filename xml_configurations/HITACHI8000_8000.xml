@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="FS22_4MR_HtiachiEX8000" typeName="HITACHI8000" xmlName="8000">
+    <terraform>
+        <i3d parent="0>3|0|0|0" y="-4.078" z="3.456">
+            <node x="-2.997" />
+            <node x="-1.392" />
+            <node x="0.155" />
+            <node x="1.838" />
+            <node x="3.261" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>3|0|0|0" y="-3.978" z="3.356">
+        <node x="-2.997" />
+            <node x="-1.392" />
+            <node x="0.155" />
+            <node x="1.838" />
+            <node x="3.261" />
+            <node x="-1.392" y="-0.1" z="-1" />
+            <node x="3.261" y="-0.1" z="-1" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>3|0|0|0" y="-4.078" z="3.456">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

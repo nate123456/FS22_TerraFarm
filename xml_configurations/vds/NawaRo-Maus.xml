@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozerBlade" modName="FS22_NawaRo_Maus" typeName="loaderVehicle" xmlName="nawaRoMaus">
+    <terraform>
+        <i3d parent="nawaRoFeederPickUpNode" y="0" z="-1">
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+			<node x="-0.85" y="0" z="0" />
+			<node x="0.85" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+			<node x="-1.85" y="0" z="0" />
+			<node x="1.85" y="0" z="0" />
+			<node x="-2.35" y="0" z="0" />
+			<node x="2.35" y="0" z="0" />
+			<node x="-2.85" y="0" z="0" />
+			<node x="2.85" y="0" z="0" />
+			<node x="-3.35" y="0" z="0" />
+			<node x="3.35" y="0" z="0" />
+			<node x="-3.85" y="0" z="0" />
+			<node x="3.85" y="0" z="0" />
+			<node x="-4.35" y="0" z="0" />
+			<node x="4.35" y="0" z="0" />
+			<node x="-4.65" y="0" z="0" />
+			<node x="4.65" y="0" z="0" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="nawaRoFeederPickUpNode" y="0" z="-0.8">
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+			<node x="-0.85" y="0" z="0" />
+			<node x="0.85" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+			<node x="-1.85" y="0" z="0" />
+			<node x="1.85" y="0" z="0" />
+			<node x="-2.35" y="0" z="0" />
+			<node x="2.35" y="0" z="0" />
+			<node x="-2.85" y="0" z="0" />
+			<node x="2.85" y="0" z="0" />
+			<node x="-3.35" y="0" z="0" />
+			<node x="3.35" y="0" z="0" />
+			<node x="-3.85" y="0" z="0" />
+			<node x="3.85" y="0" z="0" />
+			<node x="-4.35" y="0" z="0" />
+			<node x="4.35" y="0" z="0" />
+			<node x="-4.65" y="0" z="0" />
+			<node x="4.65" y="0" z="0" />
+			<node x="-4.65" y="0" z="0.2" />
+			<node x="4.65" y="0" z="0.2" />
+        </i3d>
+    </collision>
+	    <discharge>
+        <i3d parent="raycastNode" y="0" z="-1">
+
+            <line
+                x1="0" y1="0" z1="0.9"
+                x2="0" y2="0" z2="0.5"
+            />
+           
+        </i3d>
+        <mode>NORMAL</mode>
+        <radius>1.5</radius>
+    </discharge>
+	    <rotation>
+        <i3d parent="0>0|1" />
+        <axis>2</axis>
+        <min>-45</min>
+        <max>45</max>
+        <threshold>30</threshold>
+        <offsetFactor>3.0</offsetFactor>
+    </rotation>
+    <paint>
+        <i3d parent="nawaRoFeederPickUpNode" y="0" z="-1">
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+            <node x="-1.35" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+			<node x="-0.85" y="0" z="0" />
+			<node x="0.85" y="0" z="0" />
+            <node x="1.35" y="0" z="0" />
+			<node x="-1.85" y="0" z="0" />
+			<node x="1.85" y="0" z="0" />
+			<node x="-2.35" y="0" z="0" />
+			<node x="2.35" y="0" z="0" />
+			<node x="-2.85" y="0" z="0" />
+			<node x="2.85" y="0" z="0" />
+			<node x="-3.35" y="0" z="0" />
+			<node x="3.35" y="0" z="0" />
+			<node x="-3.85" y="0" z="0" />
+			<node x="3.85" y="0" z="0" />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

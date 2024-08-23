@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="ripper" modName="FS22_JackhammerPack" typeName="BRH" xmlName="brh2">
+    <terraform>
+        <i3d parent="0>2|0|0" x="-0.42" y="0.45" z="-0.2">
+            <node x="-0.81" y="-0.15" z="-0.25" />
+            <node x="0" y="-0.15" z="-0.25" />
+            <node x="0.81" y="-0.15" z="-0.25" />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>LOWER</mode>
+        </modes>
+    </terraform>
+    <discharge>
+        <i3d parent="0>2|0|0" y="-0.46" z="0.3">
+            <line
+                x1="2" y1="0" z1="-0.9"
+                x2="0" y2="0" z2="-0.5"
+            />
+            <line
+                x1="-2" y1="0" z1="-0.9"
+                x2="0" y2="0" z2="-0.5"
+            />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+    </discharge>
+    <paint>
+        <i3d parent="0>2|0|0">
+            <node />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

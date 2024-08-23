@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_70TonCWS" typeName="470LC" xmlName="Bucket470LC1">
+    <terraform>
+        <i3d parent="0>0|0|1" y="0" z="0">
+            <node x="1" y="0" z="0" />
+            <node x="0.609" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+            <node x="-0.609" y="0" z="0" />
+            <node x="-1" y="0" z="0" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>0|0|1" y="0" z="0.1">
+            <node x="1" y="0" z="0" />
+            <node x="1" y="0" z="0.7" />
+            <node x="-1" y="0" z="0.7" />
+            <node x="-1" y="0" z="0" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>0|0|1" y="0" z="0">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+			
+	<designMaterialConfigurations price="500" useDefaultColors="true">
+		<designMaterialConfiguration name="Hitachi Black"  color="0.043 0.043 0.043" material="16"/>
+	    <designMaterialConfiguration name="Volvo/Hitachi Gray" material="0" color="0.05 0.05 0.05 " price="0" />
+        <designMaterialConfiguration name="Volvo White" material="0" color="0.05 0.05 0.05 " price="0" />
+        <designMaterialConfiguration name="Cat Yellow" material="0" color="0.776 0.342 0.018 " price="0" />
+		<designMaterialConfiguration name="Cat/Komatsu Black" material="0" color="0.03 0.03 0.03 " price="0" />
+        <designMaterialConfiguration name="Hitachi Orange" material="0" color="1 0.133 0 " price="0" />
+        <designMaterialConfiguration name="Komatsu Yellow" material="0" color="0.947 0.51 0.012 " price="0" />
+        <designMaterialConfiguration name="Linkbelt Red" material="0" color="0.9 0 0 " price="0" />
+		
+		<material name="Deere670G" shaderParameter="colorMat1" />
+    </designMaterialConfigurations>
+    </discharge>
+</configuration>
+</configuration>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_JCB_Pack_CX" typeName="shovel" xmlName="godet2">
+    <terraform>
+        <i3d parent="0>19|0|4" z="0.3">
+            <node x="-1.382" />
+            <node x="-0.491" />
+            <node x="0.491" />
+            <node x="1.219" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>19|0|4" y="-0.028" z="0.35">
+            <node x="-1.382" z="0.35" />
+            <node x="-0.491" z="0.35" />
+            <node x="0.491" z="0.35" />
+            <node x="1.382" z="0.35" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>19|0|4" z="0.35">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

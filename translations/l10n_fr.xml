@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<texts>
+        <!-- GUI GLOBAL SETTINGS -->
+        <text name="GUI_GLOBAL_TITLE" text="Paramètres du TerraFarm" />
+
+        <text name="GUI_GLOBAL_ENABLE" text="Autoriser le TerraFarm" />
+        <text name="GUI_GLOBAL_ENABLE_TOOLTIP" text="Permet d'autoriser l'activation du TerraFarm dans les véhicules compatibles" />
+
+        <text name="GUI_GLOBAL_DEBUG" text="Mode deboggage" />
+        <text name="GUI_GLOBAL_DEBUG_TOOLTIP" text="Affichage des points de contrôle sur les outils effectuant de la terraformation" />
+
+        <!-- GUI MACHINE SETTINGS -->
+        <text name="GUI_TITLE_NO_MACHINE" text="Aucun véhicule" />
+    
+        <text name="GUI_ENABLE_MACHINE" text="Activer TerraFarm" />
+        <text name="GUI_ENABLE_MACHINE_TOOLTIP" text="Active l'utilisation du TF pour ce véhicule" />
+
+        <text name="GUI_DISABLE_PAINT" text="Désactiver la peinture" />
+        <text name="GUI_DISABLE_PAINT_TOOLTIP" text="Empêche le changement de texture du sol lors de la terraformation" />
+
+        <text name="GUI_DISABLE_DISCHARGE" text="Désactiver le déchargement" />
+        <text name="GUI_DISABLE_DISCHARGE_TOOLTIP" text="Empêche la création de matière lors de la terraformation" />
+
+        <text name="GUI_CLEAR_DENSITY_MAP" text="Nettoyage des surplus" />
+        <text name="GUI_CLEAR_DENSITY_MAP_TOOLTIP" text="Supprime les tas de rochers autour de la terraformation" />
+
+        <text name="GUI_DISABLE_CLEAR_DECO" text="Désactiver la suppression de la décoration" />
+        <text name="GUI_DISABLE_CLEAR_DECO_TOOLTIP" text="Empêche la suppression des décorations lors de la terraformation" />
+
+        <text name="GUI_DISABLE_CLEAR_WEED" text="Désactiver la suppression des mauvaises herbes" />
+        <text name="GUI_DISABLE_CLEAR_WEED_TOOLTIP" text="Empêche la suppression des mauvaises herbes lors de la terraformation" />
+
+        <text name="GUI_DISABLE_REMOVE_FIELD" text="Désactiver la suppression de champs" />
+        <text name="GUI_DISABLE_REMOVE_FIELD_TOOLTIP" text="Empêche la suppression des champs et de l'herbe lors de la terraformation" />
+
+        <text name="GUI_USE_MASSPERLITER" text="Utiliser la densité de la matière" />
+        <text name="GUI_USE_MASSPERLITER_TOOLTIP" text="Utilise la masse par litre de la matière active pour le calcul du volume" />
+
+        <text name="GUI_FILLTYPE" text="Matière" />
+        <text name="GUI_FILLTYPE_TOOLTIP" text="Sélection de la matière" />
+
+        <text name="GUI_PAINT_RADIUS" text="Rayon de la peinture" />
+        <text name="GUI_PAINT_RADIUS_TOOLTIP" text="Détermine le rayon d'action de la texture" />
+
+        <text name="GUI_TITLE_PAINT_LAYERS" text="Textures disponibles" />
+
+        <text name="GUI_STRENGTH" text="Intensité" />
+        <text name="GUI_RADIUS" text="Rayon" />
+
+        <text name="GUI_TERRAFORM_LAYER_TOOLTIP" text="Choix de la texture à appliquer après la terraformation" />
+        <text name="GUI_DISCHARGE_LAYER_TOOLTIP" text="Choix de la matière obtenue pendant la terraformation" />
+        
+        <!-- INPUT DISPLAY -->
+        <text name="ENABLE_MACHINE" text="Activer le TerraFarm" />
+        <text name="DISABLE_MACHINE" text="Désactiver le TerraFarm" />
+        <text name="TOGGLE_TERRAFORM_MODE" text="Type de terraformation" />
+        <text name="TOGGLE_DISCHARGE_MODE" text="Type de déchargement" />
+        <text name="OPEN_MENU" text="Ouvrir le menu TerraFarm" />
+
+        <!-- MISC -->
+        <text name="MODE_TERRAFORM" text="Terraformation" />
+        <text name="MODE_DISCHARGE" text="Déchargement" />
+
+        <!-- MACHINE MODES -->
+        <text name="MACHINE_MODE_INVALID" text="Mode invalide" />
+        <text name="MACHINE_MODE_NORMAL" text="Matière" />
+        <text name="MACHINE_MODE_RAISE" text="Relever" />
+        <text name="MACHINE_MODE_LOWER" text="Abaisser" />
+        <text name="MACHINE_MODE_SMOOTH" text="Adoucir" />
+        <text name="MACHINE_MODE_FLATTEN" text="Aplatir" />
+        <text name="MACHINE_MODE_PAINT" text="Peindre" />
+    
+        <!-- INPUT BINDINGS DESCRIPTIONS -->
+        <text name="input_TERRAFARM_TOGGLE_ENABLE" text="Active le TerraFarm dans le véhicule actif" />
+        <text name="input_TERRAFARM_OPEN_MENU" text="Ouvre le menu du TerraFarm" />
+        <text name="input_TERRAFARM_TOGGLE_TERRAFORM_MODE" text="Choix du type de terraformation" />
+        <text name="input_TERRAFARM_TOGGLE_DISCHARGE_MODE" text="Choix de la matière produite pendant la terraformation" />
+    </texts>
+</l10n>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="suctionAttachment" modName="FS22_Aspiratrice" typeName="shovel" xmlName="Grand_buse">
+    <terraform>
+        <i3d parent="Col" y="-2.2">
+            <node x="0.25" z="-0.25" />
+            <node x="0.25" z="0.25" />
+            <node x="-0.25" z="0.25" />
+            <node x="-0.25" z="-0.25" />
+        </i3d>
+        <modes>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+        <radius>2.5</radius>
+    </terraform>
+    <paint>
+        <i3d parent="Col" y="-2.2">
+            <node />
+        </i3d>
+        <radius>2.5</radius>
+    </paint>
+    <settings>
+        <volumeFillRatio>0.1</volumeFillRatio>
+        <flattenRadius>2.5</flattenRadius>
+        <smoothRadius>2.5</smoothRadius>
+    </settings>
+</configuration>

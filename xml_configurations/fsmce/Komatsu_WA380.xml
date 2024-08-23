@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_Komatsu_WA380" typeName="shovel" xmlName="Bucket">
+    <terraform>
+        <i3d parent="0>1|0" y="-0.281" z="1.434">
+            <node x="-1.45" />
+            <node x="-0.725" />
+            <node x="-0.362" />
+            <node x="0.362" />
+            <node x="0.725" />
+            <node x="1.45" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>1|0" y="-0.281" z="1.334">
+            <node x="-1.45" />
+            <node x="-0.725" />
+            <node x="-0.362" />
+            <node x="0.362" />
+            <node x="0.725" />
+            <node x="1.45" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>1|0" y="-0.281" z="1.434">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

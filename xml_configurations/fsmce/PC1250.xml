@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_KOMATSUPC1250" typeName="bucket" xmlName="bote">
+    <terraform>
+        <i3d parent="0>1" z="-2.147">
+            <node x="1.022" />
+            <node x="0.502" />
+            <node x="0" />
+            <node x="-0.487" />
+			<node x="-1.065" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>1" z="-2.147">
+            <node x="1.065" y="0" z="0.5" />
+            <node x="0" y="0" z="0.5" />
+            <node x="0.471" y="0" z="0.5"/>
+            <node x="-0.534" y="0" z="0.5" />
+            <node x="-1.065" y="0" z="0.5" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>1" z="-2.147">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

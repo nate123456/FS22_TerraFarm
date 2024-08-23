@@ -15,49 +15,200 @@
             <GuiElement type="scrollingLayout" profile="ingameMenuSettingsLayout" id="boxLayout" topClipperElementName="topClipper" bottomClipperElementName="bottomClipper">
                 <GuiElement type="text" profile="settingsMenuSubtitle" text=" " />
 
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformPaintRadius" onEnterPressed="onRadiusPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Paint radius" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
+
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onEnableClick" id="enabled">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_ENABLE_MACHINE" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_ENABLE_MACHINE_TOOLTIP" />
                 </GuiElement>
 
-                <GuiElement type="text" profile="settingsMenuSubtitle" text=" " />
-
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformStrength" onEnterPressed="onStrengthPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Raise/lower strength" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
-                </GuiElement>
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformRadius" onEnterPressed="onRadiusPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Raise/lower radius" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onDisablePaintClick" id="disablePaint">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_DISABLE_PAINT" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISABLE_PAINT_TOOLTIP" />
                 </GuiElement>
 
-                <GuiElement type="text" profile="settingsMenuSubtitle" text=" " />
-
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformSmoothStrength" onEnterPressed="onStrengthPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Smooth strength" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
-                </GuiElement>
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformSmoothRadius" onEnterPressed="onRadiusPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Smooth radius" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onDisableDischargeClick" id="disableDischarge">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_DISABLE_DISCHARGE" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISABLE_DISCHARGE_TOOLTIP" />
                 </GuiElement>
 
-                <GuiElement type="text" profile="settingsMenuSubtitle" text=" " />
-
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformFlattenStrength" onEnterPressed="onStrengthPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Flatten strength" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onClearDensityMapClick" id="clearDensityMap">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_CLEAR_DENSITY_MAP" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_CLEAR_DENSITY_MAP_TOOLTIP" />
                 </GuiElement>
-                <GuiElement type="empty" profile="ingameMenuGameSettingsTextInputWrapper">
-                    <GuiElement type="textInput" profile="ingameMenuGameSettingsTextInput" id="terraformFlattenRadius" onEnterPressed="onRadiusPressedTextInput" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="Flatten radius" />
-                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="" />
+
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onDisableClearDecoClick" id="disableClearDeco">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_DISABLE_CLEAR_DECO" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISABLE_CLEAR_DECO_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onDisableClearWeedClick" id="disableClearWeed">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_DISABLE_CLEAR_WEED" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISABLE_CLEAR_WEED_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onDisableRemoveFieldClick" id="disableRemoveField">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_DISABLE_REMOVE_FIELD" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISABLE_REMOVE_FIELD_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="checkedOption" profile="multiTextOptionSettings" onClick="onUseFillTypeMassPerLiterClick" id="useFillTypeMassPerLiter">
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTitle" text="I18N_GUI_USE_MASSPERLITER" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text" profile="multiTextOptionSettingsTooltip" text="I18N_GUI_USE_MASSPERLITER_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onFillTypeClick" onCreate="onCreateFillType" id="fillType" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_FILLTYPE" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="I18N_GUI_FILLTYPE_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onPaintRadiusClick" onCreate="onCreatePaintRadius" id="paintRadius" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_PAINT_RADIUS" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="I18N_GUI_PAINT_RADIUS_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="text" profile="settingsMenuSubtitle" text="I18N_GUI_TITLE_PAINT_LAYERS" />
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onTerraformPaintLayerClick" onCreate="onCreateTerraformPaintLayer" id="terraformPaintLayer" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_MODE_TERRAFORM" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="I18N_GUI_TERRAFORM_LAYER_TOOLTIP" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onDischargePaintLayerClick" onCreate="onCreateDischargePaintLayer" id="dischargePaintLayer" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_MODE_DISCHARGE" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="I18N_GUI_DISCHARGE_LAYER_TOOLTIP" />
+                </GuiElement>
+
+
+
+                <GuiElement type="text" profile="settingsMenuSubtitle" text="I18N_MODE_TERRAFORM" />
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onTerraformStrengthClick" onCreate="onCreateTerraformStrength" id="terraformStrength" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_STRENGTH" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onTerraformRadiusClick" onCreate="onCreateTerraformRadius" id="terraformRadius" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_RADIUS" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+
+                <GuiElement type="text" profile="settingsMenuSubtitle" text="I18N_MODE_DISCHARGE" />
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onDischargeStrengthClick" onCreate="onCreateDischargeStrength" id="dischargeStrength" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_STRENGTH" />
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onDischargeRadiusClick" onCreate="onCreateDischargeRadius" id="dischargeRadius" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_RADIUS"/>
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+
+                <GuiElement type="text" profile="settingsMenuSubtitle" text="I18N_MACHINE_MODE_FLATTEN" />
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onFlattenStrengthClick" onCreate="onCreateFlattenStrength" id="flattenStrength" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_STRENGTH"/>
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onFlattenRadiusClick" onCreate="onCreateFlattenRadius" id="flattenRadius" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_RADIUS"/>
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+
+                <GuiElement type="text" profile="settingsMenuSubtitle" text="I18N_MACHINE_MODE_SMOOTH" />
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onSmoothStrengthClick" onCreate="onCreateSmoothStrength" id="smoothStrength" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_STRENGTH"/>
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
+                </GuiElement>
+
+                <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onClick="onSmoothRadiusClick" onCreate="onCreateSmoothRadius" id="smoothRadius" >
+                    <GuiElement type="button" profile="multiTextOptionSettingsLeft" />
+                    <GuiElement type="button" profile="multiTextOptionSettingsRight"/>
+                    <GuiElement type="text"   profile="multiTextOptionSettingsText" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTitle" text="I18N_GUI_RADIUS"/>
+                    <GuiElement type="bitmap" profile="multiTextOptionSettingsBg" />
+                    <GuiElement type="text"   profile="multiTextOptionSettingsTooltip" text="" />
                 </GuiElement>
             </GuiElement>
         </GuiElement>

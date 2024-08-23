@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="FS22_CAT_6015B_FSM" typeName="6015B" xmlName="6015">
+    <terraform>
+        <i3d parent="0>2|1|2|1|1" y="2.231" z="1.292">
+            <node x="1.098" />
+            <node x="0.42" />
+            <node x="0" />
+            <node x="-0.706" />
+            <node x="-1.159" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>2|1|2|1|1" y="2.231" z="1.292">
+            <node x="1.098" />
+            <node x="0.42" />
+            <node x="0" />
+            <node x="-0.706" />
+            <node x="-1.159" />
+            <node x="1.317" y="2.182" z="1.3" />
+            <node x="-1.292" y="2.182" z="1.3" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>2|1|2|1|1" y="2.231" z="1.292">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

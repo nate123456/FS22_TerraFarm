@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="roadCompactor" modName="FS22_Bomag_BW120_FSM" typeName="roadCompactor" xmlName="FrontWheelRoller">
+    <terraform>
+        <i3d parent="mainCompFront" y="0" z="0.899">
+            <node x="-0.748" />
+            <node x="-0.3" />
+            <node x="0.3" />
+            <node x="0.748" />
+        </i3d>
+        <modes>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <paint>
+        <i3d parent="mainCompFront" y="0" z="0.899">
+            <node x="-0.748" />
+            <node x="-0.3" />
+            <node x="0.3" />
+            <node x="0.748" />
+        </i3d>
+        <radius>2</radius>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

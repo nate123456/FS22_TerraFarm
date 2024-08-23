@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="giants" typeName="shovelLeveler" xmlName="highDumpBucket">
+    <terraform>
+        <i3d parent="shovel" y="-0.075" z="0.35">
+            <node x="-1.2" />
+            <node x="-0.45" />
+            <node x="0.45" />
+            <node x="1.2" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="shovel" y="-0.15" z="-0.4">
+            <node x="-1.2" z="0.85" />
+            <node x="-1.2" z="-0.4" />
+            <node x="1.2" z="0.85" />
+            <node x="1.2" z="-0.4" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="shovel">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

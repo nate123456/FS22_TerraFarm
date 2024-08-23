@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
-    <GuiElement type="dynamicFadedBitmap" profile="uiFullBlurBG" />
+    <GuiElement type="dynamicFadedBitmap" profile="uiFullBlurBG" id="dynamicBitmap" />
     <GuiElement type="bitmap" profile="bgVignette" />
     <GuiElement type="bitmap" profile="bgGlow" />
 
@@ -19,7 +19,7 @@
 
     <GuiElement type="empty" profile="uiElementContainerFullScreenSpanning">
         <GuiElement type="paging" profile="uiInGameMenuPaging" onPageChange="onPageChange" onPageUpdate="onPageUpdate" id="pagingElement">
-            <GuiElement type="frameReference" ref="terraFarmMain" name="terraFarmMain" id="terraFarmMainSettings" />
+            <GuiElement type="frameReference" ref="terraFarmGlobal" name="terraFarmGlobal" id="terraFarmGlobalSettings" />
             <GuiElement type="frameReference" ref="terraFarmMachine" name="terraFarmMachine" id="terraFarmMachineSettings" />
         </GuiElement>
     </GuiElement>

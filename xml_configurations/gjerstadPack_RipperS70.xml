@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="ripper" modName="FS22_gjerstadPack" typeName="plow" xmlName="ripperS70">
+    <terraform>
+        <i3d parent="groundReferenceNode" y="-0.1" z="0.18">
+            <node x="-0.12" />
+            <node x="0.12" />
+        </i3d>
+        <modes>
+            <mode>LOWER</mode>
+        </modes>
+        <radius>1.5</radius>
+    </terraform>
+    <paint>
+        <i3d parent="groundReferenceNode" y="-0.1" z="0.1">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <i3d parent="groundReferenceNode" y="-0.1" z="0.1">
+            <!-- RIGHT SIDE-->
+            <line
+                x1="0.9" y1="0" z1="-0.2"
+                x2="0" y2="0" z2="-0.7"
+            />
+            <!-- LEFT SIDE-->
+            <line
+                x1="-0.9" y1="0" z1="-0.2"
+                x2="0" y2="0" z2="-0.7"
+            />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+        <radius>2.5</radius>
+    </discharge>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

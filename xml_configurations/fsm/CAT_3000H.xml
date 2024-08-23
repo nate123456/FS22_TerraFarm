@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketWheelLoader" modName="FS22_CAT_R3000H_FSM" typeName="CoalLoader" xmlName="CoalLoader">
+    <terraform>
+        <i3d parent="attacher" y="-0.48" z="2.1">
+            <node x="-1.14" z="-0.14" />
+            <node x="-0.75" z="-0.06" />
+            <node x="-0.45" />
+            <node />
+            <node x="0.45" />
+            <node x="0.75" z="-0.06" />
+            <node x="1.14" z="-0.14" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="attacher" y="-0.56" z="2.24">
+            <node x="-1.14" z="-0.14" />
+            <node x="-0.75" z="-0.06" />
+            <node x="-0.45" />
+            <node />
+            <node x="0.45" />
+            <node x="0.75" z="-0.06" />
+            <node x="1.14" z="-0.14" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="attacher" y="-0.48" z="1.9">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

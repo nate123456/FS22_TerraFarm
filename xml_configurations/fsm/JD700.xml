@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_JohnDeere_700L_FSM" typeName="700l" xmlName="700L">
+      <terraform>
+        <i3d parent="BladeVis" y="-0.685" z="0.9">
+             <node x="-2.1" />
+            <node x="-1.26" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="1.26" />
+            <node x="2.1" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="BladeVis" y="-0.91" z="0.6">
+            <node x="-2.05" z="0.05" />
+            <node x="-1.0" z="0.05" />
+            <node x="1.0" z="0.05" />
+            <node x="2.05" z="0.05" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="BladeVis" y="-0.46" z="0.6">
+                <!-- LEFT SIDE-->
+            <line
+                x1="2.5" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-2.5" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+    </discharge>
+    <paint>
+        <i3d parent="BladeVis" y="-0.46" z="0.6">
+            <node x="-1.26" />
+            <node x="1.26" />
+        </i3d>
+    </paint>
+</configuration>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_CatD5NG" typeName="CaterpillarD5" xmlName="CaterpillarD5">
+    <terraform>
+        <i3d parent="0>3|0|0" y="-0.485" z="0.85">
+            <node x="-2.08" z="-0.2" />
+            <node x="-0.69" z="-0.2" />
+            <node x="0.69" z="-0.2" />
+            <node x="2.08" z="-0.2" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+        <radius>3</radius>
+    </terraform>
+    <collision>
+        <i3d parent="0>3|0|0" y="-0.485" z="0.85">
+            <node x="-2.08" z="-0.2" />
+            <node x="-0.69" z="-0.2" />
+            <node x="0.69" z="-0.2" />
+            <node x="2.08" z="-0.2" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="0>3|0|0" y="-0.485" z="0.85">
+            <!-- LEFT SIDE-->
+            <line
+                x1="4.5" y1="-0.6" z1="0"
+                x2="0" y2="-0.4" z2="0"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-4.5" y1="-0.6" z1="0"
+                x2="0" y2="-0.4" z2="0"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+        <radius>1.5</radius>
+    </discharge>
+    <rotation>
+        <i3d parent="0>3|0" />
+        <axis>2</axis>
+        <min>-20</min>
+        <max>20</max>
+        <threshold>10</threshold>
+        <offsetFactor>2.0</offsetFactor>
+    </rotation>
+    <paint>
+        <i3d parent="0>3|0|0" y="-0.26" z="0.55">
+            <node x="-1.25" />
+            <node x="1.25" />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

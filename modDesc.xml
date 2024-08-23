@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="61">
+<modDesc descVersion="72">
     <author>scfmod</author>
-    <version>0.3.6.0</version>
+	<contributors>Nonnus FS MINER Vdskillers</contributors>
+    <version>0.4.MCE.13</version>
     <title>
         <en>TerraFarm</en>
     </title>
     <description>
-        <en>
-            <![CDATA[TerraFarm - The true landscaping experience]]>
-        </en>
+        <en><![CDATA[TerraFarm - The true landscaping experience]]></en>
+        <fr><![CDATA[TerraFarm - Le simulateur de terrassement]]></fr>
     </description>
     <iconFilename>store.dds</iconFilename>
     <multiplayer supported="true" />
     <extraSourceFiles>
         <sourceFile filename="script.lua" />
     </extraSourceFiles>
+	
+
+    <l10n filenamePrefix="translations/l10n" />
+
+    <actions>
+        <action name="TERRAFARM_TOGGLE_ENABLE" category="TERRAFARM" />
+        <action name="TERRAFARM_OPEN_MENU" category="TERRAFARM" />
+        <action name="TERRAFARM_TOGGLE_TERRAFORM_MODE" category="TERRAFARM" />
+        <action name="TERRAFARM_TOGGLE_DISCHARGE_MODE" category="TERRAFARM" />
+    </actions>
+
+    <inputBinding>
+        <actionBinding action="TERRAFARM_TOGGLE_ENABLE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_o" axisComponent="+" neutralInput="0" index="1" />
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_19" axisComponent="+" neutralInput="0" index="1" />
+        </actionBinding>
+        <actionBinding action="TERRAFARM_OPEN_MENU">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_i" axisComponent="+" neutralInput="0" index="1" />
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_6 BUTTON_4" axisComponent="+" neutralInput="0" index="1" />
+        </actionBinding>
+        <actionBinding action="TERRAFARM_TOGGLE_TERRAFORM_MODE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_y" axisComponent="+" neutralInput="0" index="1" />
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_4" axisComponent="+" neutralInput="0" index="1" />
+        </actionBinding>
+        <actionBinding action="TERRAFARM_TOGGLE_DISCHARGE_MODE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_b" axisComponent="+" neutralInput="0" index="1" />
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_1" axisComponent="+" neutralInput="0" index="1" />
+        </actionBinding>
+    </inputBinding>
 </modDesc>

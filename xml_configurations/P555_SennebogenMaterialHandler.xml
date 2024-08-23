@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="P555_Sennebogen_MaterialHandler" typeName="P555Sen" xmlName="sennebogenHiLift">
+    <terraform>
+        <i3d parent="0>0|1|2|2|1|0|0|0|0|0|9" >
+            <node y="-0.80" />
+            <node y="-0.5" />
+            <node y="0.05" />
+            <node y="0.5" />
+            <node y="0.80" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>0|1|2|2|1|0|0|0|0|0|9" >
+            <node y="-0.80" />
+            <node y="-0.5" />
+            <node y="0.05" />
+            <node y="0.5" />
+            <node y="0.80" />
+
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>0|1|2|2|1|0|0|0|0|0|9" >
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

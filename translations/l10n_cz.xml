@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<texts>
+        <!-- GUI GLOBAL SETTINGS -->
+        <text name="GUI_GLOBAL_TITLE" text="Nastavení TerraFarm" />
+
+        <text name="GUI_GLOBAL_ENABLE" text="Povolit TerraFarm" />
+        <text name="GUI_GLOBAL_ENABLE_TOOLTIP" text="Globální nastavení pro všechny stroje TerraFarm" />
+
+        <text name="GUI_GLOBAL_DEBUG" text="Vývojářský mód" />
+        <text name="GUI_GLOBAL_DEBUG_TOOLTIP" text="" />
+
+        <!-- GUI MACHINE SETTINGS -->
+        <text name="GUI_TITLE_NO_MACHINE" text="Žádný stroj" />
+    
+        <text name="GUI_ENABLE_MACHINE" text="Povolit stroj" />
+        <text name="GUI_ENABLE_MACHINE_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_PAINT" text="Zakázat malování" />
+        <text name="GUI_DISABLE_PAINT_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_DISCHARGE" text="Zakázat vyprázdnění" />
+        <text name="GUI_DISABLE_DISCHARGE_TOOLTIP" text="" />
+
+        <text name="GUI_CLEAR_DENSITY_MAP" text="Vymazat density map" />
+        <text name="GUI_CLEAR_DENSITY_MAP_TOOLTIP" text="Odstraňte fillTypes kolem deformace terénu" />
+
+        <text name="GUI_DISABLE_CLEAR_DECO" text="Zakázat vymazání DecoArea" />
+        <text name="GUI_DISABLE_CLEAR_DECO_TOOLTIP" text="Při terraformování neodstraňujte keře a podobně" />
+
+        <text name="GUI_DISABLE_CLEAR_WEED" text="Zakázat vymazání oblasti WeedArea" />
+        <text name="GUI_DISABLE_CLEAR_WEED_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_REMOVE_FIELD" text="Zakázat odstranění pole" />
+        <text name="GUI_DISABLE_REMOVE_FIELD_TOOLTIP" text="Při terraformování neodstraňujte trávu a pole a podobně" />
+
+        <text name="GUI_USE_MASSPERLITER" text="Použijte hmotnost na litr" />
+        <text name="GUI_USE_MASSPERLITER_TOOLTIP" text="Použijte hmotnost na litr podle typu náplně" />
+
+        <text name="GUI_FILLTYPE" text="Typ náplně" />
+        <text name="GUI_FILLTYPE_TOOLTIP" text="" />
+
+        <text name="GUI_PAINT_RADIUS" text="Poloměr malování" />
+        <text name="GUI_PAINT_RADIUS_TOOLTIP" text="" />
+
+        <text name="GUI_TITLE_PAINT_LAYERS" text="Vrstvy malování" />
+
+        <text name="GUI_STRENGTH" text="Síla" />
+        <text name="GUI_RADIUS" text="Poloměr" />
+
+        <text name="GUI_TERRAFORM_LAYER_TOOLTIP" text="" />
+        <text name="GUI_DISCHARGE_LAYER_TOOLTIP" text="" />
+        
+        <!-- INPUT DISPLAY -->
+        <text name="ENABLE_MACHINE" text="Povolit TerraFarm na stroji" />
+        <text name="DISABLE_MACHINE" text="Zakázat TerraFarm na stroji" />
+        <text name="TOGGLE_TERRAFORM_MODE" text="Přepnout režim plnění" />
+        <text name="TOGGLE_DISCHARGE_MODE" text="Přepnout režim vyprázdnění" />
+        <text name="OPEN_MENU" text="Otevřít nabídku TerraFarm" />
+
+        <!-- MISC -->
+        <text name="MODE_TERRAFORM" text="Plnění" />
+        <text name="MODE_DISCHARGE" text="Vyprázdnění" />
+
+        <!-- MACHINE MODES -->
+        <text name="MACHINE_MODE_INVALID" text="Neplatný režim" />
+        <text name="MACHINE_MODE_NORMAL" text="Normál" />
+        <text name="MACHINE_MODE_RAISE" text="Zvednout" />
+        <text name="MACHINE_MODE_LOWER" text="Hloubit" />
+        <text name="MACHINE_MODE_SMOOTH" text="Vyhladit" />
+        <text name="MACHINE_MODE_FLATTEN" text="Vyrovnat" />
+        <text name="MACHINE_MODE_PAINT" text="Malovat" />
+    
+        <!-- INPUT BINDINGS DESCRIPTIONS -->
+        <text name="input_TERRAFARM_TOGGLE_ENABLE" text="Přepnout povolení stroje" />
+        <text name="input_TERRAFARM_OPEN_MENU" text="Otevřít nabídku" />
+        <text name="input_TERRAFARM_TOGGLE_TERRAFORM_MODE" text="Přepnout režim plnění" />
+        <text name="input_TERRAFARM_TOGGLE_DISCHARGE_MODE" text="Přepnout režim vyprázdnění" />
+    </texts>
+</l10n>

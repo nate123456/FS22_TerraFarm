@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_Cat390F" typeName="bucket" xmlName="7Tooth">
+    <terraform>
+        <i3d parent="0>0" y="-0.25" z="-0.1">
+            <node x="1.329" y="0.05" z="1.36" />
+            <node x="0" y="0.05" z="1.36" />		
+			<node x="-1.356" y="0.05" z="1.36" />	
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>0" y="-0.25" z="-0.3">
+            <node x="1.329" y="0.05" z="-0.1" />
+            <node x="1.329" y="0.05" z="0.7" />
+            <node x="-1.356" y="0.05" z="0.7" />  
+			<node x="-1.356" y="0.05" z="-0.1" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>0">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>
+</configuration>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozerBlade" modName="FS22_Case_CX35B_FSM" typeName="CX35" xmlName="caseEX">
+    <terraform>
+        <i3d parent="levelerNode" y="0" z="0">
+            <node x="-0.848" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="0.848" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+        <radius>3</radius>
+    </terraform>
+    <collision>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <node x="-0.848" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="0.848" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <!-- LEFT SIDE-->
+            <line
+                x1="1.7" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-1.7" y1="0" z1="-0.6"
+                x2="0" y2="0" z2="-0.4"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+        <radius>1.5</radius>
+    </discharge>
+    <rotation>
+        <i3d parent="levelerNode" />
+        <axis>2</axis>
+        <min>-15</min>
+        <max>15</max>
+        <threshold>10</threshold>
+        <offsetFactor>2.0</offsetFactor>
+    </rotation>
+    <paint>
+        <i3d parent="levelerNode" y="0" z="0">
+            <node x="-0.1" />
+            <node x="0.1" />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

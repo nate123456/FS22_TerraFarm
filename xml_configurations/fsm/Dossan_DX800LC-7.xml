@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="FS22_Dossan_80t_FSM" typeName="doosan" xmlName="Doosan">
+    <terraform>
+        <i3d parent="1Bucket" y="0.7" z="-1.95">
+            <node x="-0.84" />
+            <node x="-0.4" />
+            <node x="0.05" />
+            <node x="0.5" />
+            <node x="0.95" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="1Bucket" y="1.0" z="-2.05">
+            <node x="-0.84" />
+            <node x="-0.4" />
+            <node x="0.05" />
+            <node x="0.5" />
+            <node x="0.95" />
+            <node x="-0.84" y="-0.1" z="-1" />
+            <node x="0.95" y="-0.1" z="-1" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="1Bucket" y="0.9" z="-1.95">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

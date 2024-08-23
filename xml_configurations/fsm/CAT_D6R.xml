@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_CAT_D6R_FSM" typeName="CatD6R" xmlName="Catd6">
+    <terraform>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <node x="-1.4" z="0.1" />
+            <node x="-0.8" z="0.1" />
+            <node x="-0.4" />
+            <node x="0" />
+            <node x="0.4" />
+            <node x="0.8" z="0.1" />
+            <node x="1.4" z="0.1" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <node x="-1.4" z="0.1" />
+            <node x="-0.8" z="0.1" />
+            <node x="-0.4" />
+            <node x="0" />
+            <node x="0.4" />
+            <node x="0.8" z="0.1" />
+            <node x="1.4" z="0.1" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="levelerNode" y="-0" z="0">
+            <line
+                x1="2" z1="-1"
+                x2="0" z2="-2"
+            />
+            <line
+                x1="-2" z1="-1"
+                x2="0" z2="-2"
+            />
+        </i3d>
+    </discharge>
+    <paint>
+        <i3d parent="levelerNode" y="0" z="0">
+            <node x="-1.4" />
+            <node x="1.4" />
+        </i3d>
+    </paint>
+</configuration>

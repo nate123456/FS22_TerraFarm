@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="ripper" modName="FS22_Komatsu_D375A_FSM" typeName="375ARripper" xmlName="375ripper">
+    <terraform>
+        <i3d parent="groundReferenceNode">
+            <node x="-0.247" y="-0" z="-0" />
+            <node x="0" y="-0" z="-0" />
+            <node x="0.247" y="-0" z="-0" />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>LOWER</mode>
+        </modes>
+    </terraform>
+    <discharge>
+        <i3d parent="groundReferenceNode" y="-0.01" z="0.01">
+            <line
+                x1="0.247" y1="0" z1="-0.01"
+                x2="0" y2="0" z2="-0.01"
+            />
+            <line
+                x1="-0.247" y1="0" z1="-0.01"
+                x2="0" y2="0" z2="-0.01"
+            />
+        </i3d>
+        <radius>1.5</radius>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+    </discharge>
+    <paint>
+        <i3d parent="groundReferenceNode">
+            <node />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketWheelLoader" modName="FS22_4MR_Cat994" typeName="cat992" xmlName="cat994">
+    <terraform>
+        <i3d parent="0>1|1|0|1|4" y="0" z="-0.6">
+            <node x="-1.15" y="0" z="0" />
+            <node x="-0.388" y="0" z="0" />
+            <node x="0.388" y="0" z="0" />
+            <node x="1.15" y="0" z="0" />
+			<node x="-1.85" y="0" z="0" />
+            <node x="1.85" y="0" z="0" />
+			<node x="-2.35" y="0" z="0" />
+            <node x="2.35" y="0" z="0" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>1|1|0|1|4" y="0" z="0">
+            <node x="-1.15" y="-0.1" z="0.1" />
+			<node x="-0.388" y="-0.1" z="0" />
+            <node x="0.388" y="-0.1" z="0" />
+            <node x="0.388" y="-0.1" z="0.1" />
+			<node x="0.388" y="-0.1" z="0.1" />
+            <node x="1.15" y="-0.1" z="0.1" />
+            <node x="-1.15" y="-0.1" z="0.1" />
+            <node x="1.15" y="-0.1" z="0.1" />
+			<node x="-1.85" y="-0.1" z="0.1" />
+            <node x="1.85" y="-0.1" z="0.1" />
+			<node x="-2.35" y="-0.1" z="0" />
+            <node x="2.35" y="-0.1" z="0" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>1|1|0|1|4" y="0" z="-0.6"> 
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

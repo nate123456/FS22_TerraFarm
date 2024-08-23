@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_1_10TonBucketPack" typeName="shovel" xmlName="Cat4Tooth">
+    <terraform>
+        <i3d parent="0>3" y="0" z="0">
+            <node x="-0.345" y="-0.189" z="-0.594" />
+            <node x="0" y="-0.189" z="-0.594" />
+            <node x="0.345" y="-0.189" z="-0.594" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>3" y="0" z="0">
+            <node x="0.345" y="-0.2" z="-0.421"  />
+            <node x="-0.345" y="-0.2" z="-0.421"  />
+            <node x="0.345" y="-0.172" z="0.125"  />
+            <node x="-0.345" y="-0.172" z="0.125"  />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>3" y="0" z="0">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

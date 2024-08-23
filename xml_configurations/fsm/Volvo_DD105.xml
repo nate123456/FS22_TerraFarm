@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="roadCompactor" modName="FS22_Volvo_DD105_FSM" typeName="VolvoDD105" xmlName="VolvoRoller">
+    <terraform>
+        <i3d parent="FrontVolvo" y="-0.623" z="1.58">
+            <node x="-0.9" />
+            <node x="-0.4" />
+            <node x="0.4" />
+            <node x="0.9" />
+        </i3d>
+        <modes>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <paint>
+        <i3d parent="FrontVolvo" y="-0.623" z="1.58">
+            <node x="-0.9" />
+            <node x="-0.4" />
+            <node x="0.4" />
+            <node x="0.9" />
+        </i3d>
+        <radius>2</radius>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

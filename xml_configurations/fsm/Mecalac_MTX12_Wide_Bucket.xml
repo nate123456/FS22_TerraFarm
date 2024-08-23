@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_Mecalac_MTX12_FSM" typeName="mtx12Bucket" xmlName="Bucket2">
+    <terraform>
+        <i3d parent="0>" y="0.05" z="0.3">
+            <node x="-0.9" />
+            <node x="-0.35" />
+            <node x="0.35" />
+            <node x="0.9" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+        <radius>3</radius>
+    </terraform>
+    <collision>
+        <i3d parent="0>" y="-0.1" z="0.4">
+            <node x="-0.9" z="-0.5" />
+            <node x="-0.9" />
+            <node x="-0.35" />
+            <node x="0.35" />
+            <node x="0.9" />
+            <node x="0.9" z="-0.5" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>">
+            <node />
+        </i3d>
+        <radius>4</radius>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

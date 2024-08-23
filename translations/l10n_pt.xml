@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<texts>
+        <!-- GUI GLOBAL SETTINGS -->
+        <text name="GUI_GLOBAL_TITLE" text="Definições do TerraFarm" />
+
+        <text name="GUI_GLOBAL_ENABLE" text="Activar TerraFarm" />
+        <text name="GUI_GLOBAL_ENABLE_TOOLTIP" text="Estado global para todas as máquinas TerraFarm" />
+
+        <text name="GUI_GLOBAL_DEBUG" text="Modo de depuração" />
+        <text name="GUI_GLOBAL_DEBUG_TOOLTIP" text="" />
+
+        <!-- GUI MACHINE SETTINGS -->
+        <text name="GUI_TITLE_NO_MACHINE" text="Nenhuma máquina" />
+    
+        <text name="GUI_ENABLE_MACHINE" text="Activar máquina" />
+        <text name="GUI_ENABLE_MACHINE_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_PAINT" text="Desactivar pintura" />
+        <text name="GUI_DISABLE_PAINT_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_DISCHARGE" text="Desactivar descarga" />
+        <text name="GUI_DISABLE_DISCHARGE_TOOLTIP" text="" />
+
+        <text name="GUI_CLEAR_DENSITY_MAP" text="Limpar densidade no mapa" />
+        <text name="GUI_CLEAR_DENSITY_MAP_TOOLTIP" text="Remove fillTypes a volta do terreno deformado" />
+
+        <text name="GUI_DISABLE_CLEAR_DECO" text="Desactivar limpeza DecoArea" />
+        <text name="GUI_DISABLE_CLEAR_DECO_TOOLTIP" text="Remove arbustos e outras coisas quando terraforming" />
+
+        <text name="GUI_DISABLE_CLEAR_WEED" text="Desactivar limpeza das areas com ervas" />
+        <text name="GUI_DISABLE_CLEAR_WEED_TOOLTIP" text="" />
+
+        <text name="GUI_DISABLE_REMOVE_FIELD" text="Desactivar a remoção dos campos" />
+        <text name="GUI_DISABLE_REMOVE_FIELD_TOOLTIP" text="Remover relva e campos quando terraforming" />
+
+        <text name="GUI_USE_MASSPERLITER" text="Usar massa por litro" />
+        <text name="GUI_USE_MASSPERLITER_TOOLTIP" text="Usar massa por litro do filltype" />
+
+        <text name="GUI_FILLTYPE" text="Filltype" />
+        <text name="GUI_FILLTYPE_TOOLTIP" text="" />
+
+        <text name="GUI_PAINT_RADIUS" text="Raio de pintura" />
+        <text name="GUI_PAINT_RADIUS_TOOLTIP" text="" />
+
+        <text name="GUI_TITLE_PAINT_LAYERS" text="Camadas de pintura" />
+
+        <text name="GUI_STRENGTH" text="Força" />
+        <text name="GUI_RADIUS" text="Raio" />
+
+        <text name="GUI_TERRAFORM_LAYER_TOOLTIP" text="" />
+        <text name="GUI_DISCHARGE_LAYER_TOOLTIP" text="" />
+        
+        <!-- INPUT DISPLAY -->
+        <text name="ENABLE_MACHINE" text="Activar TerraFarm na máquina" />
+        <text name="DISABLE_MACHINE" text="Desactivar TerraFarm na máquina" />
+        <text name="TOGGLE_TERRAFORM_MODE" text="Alternar o modo terraform" />
+        <text name="TOGGLE_DISCHARGE_MODE" text="Alternar o modo de discarga" />
+        <text name="OPEN_MENU" text="Abrir TerraFarm menu" />
+
+        <!-- MISC -->
+        <text name="MODE_TERRAFORM" text="Terraform" />
+        <text name="MODE_DISCHARGE" text="Descarga" />
+
+        <!-- MACHINE MODES -->
+        <text name="MACHINE_MODE_INVALID" text="Modo Inválido" />
+        <text name="MACHINE_MODE_NORMAL" text="Normal" />
+        <text name="MACHINE_MODE_RAISE" text="Levantar" />
+        <text name="MACHINE_MODE_LOWER" text="Baixar" />
+        <text name="MACHINE_MODE_SMOOTH" text="Suavizar" />
+        <text name="MACHINE_MODE_FLATTEN" text="Achatar" />
+        <text name="MACHINE_MODE_PAINT" text="Pintura" />
+    
+        <!-- INPUT BINDINGS DESCRIPTIONS -->
+        <text name="input_TERRAFARM_TOGGLE_ENABLE" text="Alternar habilitar máquina" />
+        <text name="input_TERRAFARM_OPEN_MENU" text="Abrir menu" />
+        <text name="input_TERRAFARM_TOGGLE_TERRAFORM_MODE" text="Alternar modo terraform" />
+        <text name="input_TERRAFARM_TOGGLE_DISCHARGE_MODE" text="Alternar modo descarga" />
+    </texts>
+</l10n>

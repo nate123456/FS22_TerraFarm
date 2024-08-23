@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_4MR_CatD11T" typeName="CAT" xmlName="D11T">
+    <terraform>
+        <i3d parent="0>6|0|0|3" >
+            <node x="-3.562"  />
+            <node x="-2.8"  />
+            <node x="-1.8" />
+            <node x="0" />
+            <node x="1.8" />
+            <node x="2.8"  />
+            <node x="3.562"  />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>6|0|0|3" >
+            <node x="-3.562"  />
+            <node x="-2.8"  />
+            <node x="-1.8" />
+            <node x="0" />
+            <node x="1.8" />
+            <node x="2.8"  />
+            <node x="3.562"  />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="0>6|0|0|3"  >
+            <line
+                x1="4" 
+                x2="0" 
+            />
+            <line
+                x1="-4" 
+                x2="0" 
+            />
+        </i3d>
+    </discharge>
+    <paint>
+        <i3d parent="0>6|0|0|3" >
+            <node x="-1.26" />
+            <node x="1.26" />
+        </i3d>
+    </paint>
+</configuration>

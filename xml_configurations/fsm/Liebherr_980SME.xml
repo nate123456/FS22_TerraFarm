@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="FS22_Liebherr980SME,FS22_Liebherr980SME_Grey" typeName="980sme" xmlName="CYSG_980sme">
+    <terraform>
+        <i3d parent="dischargeNode" y="-0.033" z="0.16">
+            <node x="-1.12" z="-0.12" />
+            <node x="-0.57" />
+            <node />
+            <node x="0.57" />
+            <node x="1.12" z="-0.12" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="dischargeNode" y="-0.3" z="0.3">
+            <node x="-1.12" z="-0.12" />
+            <node x="-0.57" />
+            <node />
+            <node x="0.57" />
+            <node x="1.12" z="-0.12" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="dischargeNode">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

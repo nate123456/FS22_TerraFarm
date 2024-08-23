@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_Komatsu_WA900A_FSM" typeName="bucket" xmlName="WheelLoaderBucket">
+    <terraform>
+        <i3d parent="terra" y="0" z="0">
+            <node x="-2.28" z="-0.3" />
+            <node x="-1.6" z="-0.2" />
+            <node x="-0.8" z="-0.1" />
+            <node />
+            <node x="0.8" z="-0.1" />
+            <node x="1.6" z="-0.2" />
+            <node x="2.28" z="-0.3" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="terra" y="0" z="0">
+            <node x="-2.28" z="-0.3" />
+            <node x="-1.6" z="-0.2" />
+            <node x="-0.8" z="-0.1" />
+            <node />
+            <node x="0.8" z="-0.1" />
+            <node x="1.6" z="-0.2" />
+            <node x="2.28" z="-0.3" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="terra" y="-0.5" z="3">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

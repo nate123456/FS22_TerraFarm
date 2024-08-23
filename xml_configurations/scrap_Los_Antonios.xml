@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucketExcavator" modName="FS22_Los_Antonios_TH51" typeName="shovel" xmlName="TH51">
+    <terraform>
+        <i3d parent="0>0|14" y="-0.1" z="0.1">
+       <node x="1.767" />
+            <node x="0.763" />
+            <node x="0" />
+            <node x="-0.534" />
+            <node x="-1.835" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>0|14" >
+            <node x="1.767" />
+            <node x="0.763" />
+            <node x="0" />
+            <node x="-0.534" />
+            <node x="-1.835" />
+
+            <node x="1.767" y="-0.1" z="-1" />
+            <node x="-1.835" y="-0.1" z="-1" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>0|14" >
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

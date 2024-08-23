@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bulldozer" modName="FS22_KomatsuD39EX" typeName="D39EX" xmlName="D39EX">
+    <terraform>
+        <i3d parent="0>0|0|0|0|8|0" y="0" z="-0.1">
+            <node x="-1.1" />
+            <node x="-1.26" />
+            <node x="-0.42" />
+            <node x="0.42" />
+            <node x="1.26" />
+            <node x="1.1" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+        <radius>3</radius>
+    </terraform>
+    <collision>
+        <i3d parent="0>0|0|0|0|8|0" y="0" z="-0.1">
+            <node x="-2.05" z="0.05" />
+            <node x="-2.0" z="0.05" />
+			<node x="0" z="0.05" />
+            <node x="1.0" z="0.05" />
+            <node x="2.05" z="0.05" />
+			<node x="-2.05" z="0" />
+            <node x="2.05" z="0" />
+        </i3d>
+    </collision>
+    <discharge>
+        <i3d parent="0>0|0|0|0|8|0" y="0" z="-0.1">
+            <!-- LEFT SIDE-->
+            <line
+                x1="2" y1="0" z1="-0.2"
+                x2="0" y2="0" z2="-0.2"
+            />
+                <!-- x1="3.4" y1="0" z1="-0.6"
+                x2="3.4" y2="0" z2="-1.0" -->
+            <!-- RIGHT SIDE-->
+            <line
+                x1="-2" y1="0" z1="-0.2"
+                x2="0" y2="0" z2="-0.2"
+            />
+                <!-- x1="-3.4" y1="0" z1="-0.6"
+                x2="-3.4" y2="0" z2="-1.0" -->
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+        </modes>
+        <radius>1.5</radius>
+    </discharge>
+    <rotation>
+        <i3d parent="0>0|0|0|0|8|0" />
+        <axis>2</axis>
+        <min>-15</min>
+        <max>15</max>
+        <threshold>10</threshold>
+        <offsetFactor>2.0</offsetFactor>
+    </rotation>
+    <paint>
+        <i3d parent="0>0|0|0|0|8|0" y="0" z="0">
+            <node x="-0.2" />
+            <node x="0.2" />
+        </i3d>
+    </paint>
+    <settings>
+        <flattenRadius>3</flattenRadius>
+        <smoothRadius>3</smoothRadius>
+    </settings>
+</configuration>

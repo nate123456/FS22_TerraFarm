@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration machineType="bucket" modName="FS22_LiebherrR926_FSM" typeName="shovel" xmlName="Bucket1">
+    <terraform>
+        <i3d parent="0>" y="0.1" z="1.3">
+            <node x="-0.55" y="0" z="0" />
+            <node x="0" y="0" z="0" />
+            <node x="0.55" y="0" z="0" />
+        </i3d>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>LOWER</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+        </modes>
+    </terraform>
+    <collision>
+        <i3d parent="0>" y="0.1" z="1.65">
+            <node x="-0.529" y="-0.12" z="0.174" />
+            <node x="0.543" y="-0.12" z="0.174" />
+            <node x="0.543" y="-0.4" z="-0.9" />
+            <node x="-0.557" y="-0.4" z="-0.9" />
+        </i3d>
+    </collision>
+    <paint>
+        <i3d parent="0>" y="0.1" z="1.3">
+            <node />
+        </i3d>
+    </paint>
+    <discharge>
+        <modes>
+            <mode>NORMAL</mode>
+            <mode>RAISE</mode>
+            <mode>FLATTEN</mode>
+            <mode>SMOOTH</mode>
+            <mode>PAINT</mode>
+        </modes>
+    </discharge>
+</configuration>

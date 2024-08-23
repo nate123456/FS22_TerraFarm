@@ -177,6 +177,12 @@ function MachineSpecialization.actionEventOpenMenu()
     g_terraFarm:openMenu()
 end
 
+function MachineSpecialization.actionEventToggleHeightLock(vehicle)
+    local machine = vehicle.spec_machine.machine
+    machine:toggleHeightLock()
+    MachineSpecialization.updateActionEvents(vehicle)
+end
+
 ---@param vehicle Vehicle
 function MachineSpecialization.actionEventToggleEnabled(vehicle)
     local machine = vehicle.spec_machine.machine
@@ -202,7 +208,8 @@ MachineSpecialization.INPUT_ACTION_BINDINGS = {
     enableState = 'TERRAFARM_TOGGLE_ENABLE',
     openMenu = 'TERRAFARM_OPEN_MENU',
     toggleTerraformMode = 'TERRAFARM_TOGGLE_TERRAFORM_MODE',
-    toggleDischargeMode = 'TERRAFARM_TOGGLE_DISCHARGE_MODE'
+    toggleDischargeMode = 'TERRAFARM_TOGGLE_DISCHARGE_MODE',
+    toggleHeightLock = 'TERRAFARM_TOGGLE_HEIGHT_LOCK'
 }
 
 MachineSpecialization.INPUT_ACTION_TEXT = {
@@ -210,6 +217,7 @@ MachineSpecialization.INPUT_ACTION_TEXT = {
     disableMachine = 'DISABLE_MACHINE',
     toggleTerraformMode = 'TOGGLE_TERRAFORM_MODE',
     toggleDischargeMode = 'TOGGLE_DISCHARGE_MODE',
+    toggleHeightLock = 'TOGGLE_HEIGHT_LOCK',
     openMenu = 'OPEN_MENU'
 }
 
@@ -255,6 +263,7 @@ function MachineSpecialization.onRegisterActionEvents(vehicle, isActiveForInput,
             end
 
             MachineSpecialization.addActionEvent(vehicle, spec, 'openMenu', MachineSpecialization.actionEventOpenMenu, MachineSpecialization.getActionText('openMenu'))
+            MachineSpecialization.addActionEvent(vehicle, spec, 'toggleHeightLock', MachineSpecialization.actionEventToggleHeightLock, MachineSpecialization.getActionText('toggleHeightLock'))
         end
 
         MachineSpecialization.updateActionEvents(vehicle)
@@ -316,8 +325,8 @@ function MachineSpecialization.updateActionEvents(vehicle)
         MachineSpecialization.updateActionEvent(spec, 'toggleTerraformMode', true)
     end
 
+    MachineSpecialization.updateActionEvent(spec, 'toggleHeightLock', true)
     MachineSpecialization.updateActionEvent(spec, 'openMenu', true)
-
 end
 
 ---@param spec MachineSpec

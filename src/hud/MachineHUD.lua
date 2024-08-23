@@ -30,6 +30,7 @@ TERRAFORM_STATE_DISABLED_IMAGE_FILE = modFolder .. 'textures/hud_mode_blank.png'
 ---@field disabledModeIcon table
 ---@field terraformModeOverlay Overlay
 ---@field dischargeModeOverlay Overlay
+---@field heightGroundOverlay Overlay
 ---@field backgroundOverlay Overlay
 ---@field iconWidth number
 MachineHUD = {}
@@ -70,6 +71,7 @@ function MachineHUD.new()
     self:createBackgroundOverlay()
     self:createTerraformModeOverlay()
     self:createDischargeModeOverlay()
+    self:createGroundHeightOverlay()
 
     self.iconWidth = getNormalizedScreenValues(ICON_SIZE, 0)
     self.padding = getNormalizedScreenValues(8, 0)
@@ -108,6 +110,11 @@ function MachineHUD:createDischargeModeOverlay()
     self.dischargeModeOverlay = Overlay.new(g_baseUIFilename, 0, 0, width, height)
 end
 
+function MachineHUD:createGroundHeightOverlay()
+    local width, height = getNormalizedScreenValues(ICON_SIZE * self.uiScale, ICON_SIZE * self.uiScale)
+    self.groundHeightOverlay = Overlay.new(g_baseUIFilename, 0, 0, width, height)
+end
+
 function MachineHUD:setOverlayIcon(overlay, mode, enabled)
     if not mode or not TerraFarmMachine.MODE_TO_NAME[mode] then
         overlay.filename = self.disabledIcon.filename
@@ -141,8 +148,9 @@ function MachineHUD:draw()
 
     local terraformWidth, terraformText = self:getTerraformModeWidth(machine)
     local dischargeWidth, dischargeText = self:getDischargeModeWidth(machine)
+    local groundHeightWidth, groundHeightText = self:getGroundHeightWidth(machine)
 
-    totalWidth = terraformWidth + dischargeWidth
+    totalWidth = terraformWidth + dischargeWidth + groundHeightWidth
 
     --local posX, posY = GameInfoDisplay.getBackgroundPosition(self.uiScale)
 
@@ -154,11 +162,15 @@ function MachineHUD:draw()
 
     if terraformWidth > 0 then
         -- self:drawTerraformMode(terraformText, terraformWidth, 0.98, posY)
-        self:drawTerraformMode(terraformText, terraformWidth, 0.98 - dischargeWidth - self.padding * 4, posY, centerPosY, machine)
+        self:drawTerraformMode(terraformText, terraformWidth, 0.98 - dischargeWidth - groundHeightWidth - self.padding * 6, posY, centerPosY, machine)
     end
     if dischargeWidth > 0 then
         -- self:drawDischargeMode(dischargeText, dischargeWidth, 0.98 - terraformWidth - self.padding * 4, posY)
-        self:drawDischargeMode(dischargeText, dischargeWidth, 0.98, posY, centerPosY, machine)
+        self:drawDischargeMode(dischargeText, dischargeWidth, 0.98 - groundHeightWidth - self.padding * 4, posY, centerPosY, machine)
+    end
+
+    if groundHeightWidth > 0 then
+        self:drawGroundHeightMode(groundHeightText, groundHeightWidth, 0.98 - self.padding, posY, centerPosY, machine)
     end
 
     -- if machine.type.hasTerraformMode then
@@ -175,7 +187,7 @@ function MachineHUD:draw()
     -- renderText(hud_x, posY, self.uiTextSize, 'flatten radius: ' .. tostring(machine:getFlattenRadius()))
     -- renderText(hud_x, posY - self.uiTextSize, self.uiTextSize, 'terraform radius: ' .. tostring(machine:getTerraformRadius()))
 
-    setTextWrapWidth(self.backgroundOverlay.width - terraformWidth - dischargeWidth - self.padding * 8)
+    setTextWrapWidth(self.backgroundOverlay.width - terraformWidth - dischargeWidth - groundHeightWidth - self.padding * 8)
 
     if g_terraFarm and machine.enabled then
         -- setTextColor(0, 0.776, 0.992, 1)
@@ -184,7 +196,15 @@ function MachineHUD:draw()
         setTextColor(0.8, 0.8, 0.8, 0.5)
     end
 
-    renderText(hud_x + self.padding * 4, centerPosY, self.uiTextSize, machine:getDescription())
+    local machineDescription = machine:getDescription()
+
+    local negativeYPadding = 0
+
+    if string.len(machineDescription) > 15 then
+        negativeYPadding = self.uiTextSize / 2
+    end
+
+    renderText(hud_x + self.padding * 2, centerPosY + negativeYPadding, self.uiTextSize, machineDescription)
 
     setTextWrapWidth(0)
     setTextColor(unpack(GameInfoDisplay.COLOR.TEXT))
@@ -220,6 +240,25 @@ function MachineHUD:getDischargeModeWidth(machine)
 end
 
 ---@param machine TerraFarmMachine
+function MachineHUD:getGroundHeightWidth(machine)
+    local titleText = "Ground Height"
+
+    local averageNodeHeight = machine:getCurrentHeight()
+
+    self:setOverlayIcon(self.groundHeightOverlay, TerraFarmMachine.MODE.FLATTEN, machine.heightLockEnabled)
+
+    local modeText = nil
+
+    if not machine.heightLockEnabled then
+        modeText = string.format("%.2f", averageNodeHeight)
+    else
+        modeText = string.format("%.2f / %.2f", machine.heightLockHeight, averageNodeHeight)
+    end
+
+    return math.max(getTextWidth(self.uiTextSize, modeText), getTextWidth(self.uiTextSize, titleText)) + self.dischargeModeOverlay.width, modeText
+end
+
+---@param machine TerraFarmMachine
 function MachineHUD:drawTerraformMode(modeText, textWidth, rightPosX, posY, centerPosY, machine)
     local titleText = g_i18n:getText('MODE_TERRAFORM')
     setTextBold(true)
@@ -250,6 +289,22 @@ function MachineHUD:drawDischargeMode(modeText, textWidth, rightPosX, posY, cent
 
     self.dischargeModeOverlay:setPosition(rightPosX, iconPosY)
     self.dischargeModeOverlay:render()
+end
+
+---@param machine TerraFarmMachine
+function MachineHUD:drawGroundHeightMode(modeText, textWidth, rightPosX, posY, centerPosY, machine)
+    local titleText = "Ground Height"
+
+    setTextBold(true)
+    renderText(rightPosX - self.padding, centerPosY + self.uiTextSize / 2 + self.padding / 4, self.uiTextSize, titleText)
+
+    setTextBold(false)
+    renderText(rightPosX - self.padding, centerPosY - self.uiTextSize / 2 - self.padding / 4, self.uiTextSize, modeText)
+
+    local iconPosY = posY + (self.backgroundOverlay.height / 2) - self.groundHeightOverlay.height / 2
+
+    self.groundHeightOverlay:setPosition(rightPosX, iconPosY)
+    self.groundHeightOverlay:render()
 end
 
 ---@diagnostic disable-next-line: lowercase-global

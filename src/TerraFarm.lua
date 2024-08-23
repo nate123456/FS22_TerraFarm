@@ -39,7 +39,7 @@ function TerraFarm:onReady()
     TerraFarmFillTypes:initialize()
     self:setupGUI()
     self.isReady = true
-    -- self:debug_print()
+    self:debug_print()
 end
 
 local dialogTimerId
@@ -63,22 +63,22 @@ function TerraFarm:dialogTimerCallback()
     })
 end
 
--- function TerraFarm:debug_print()
---     print('   ')
---     print('getDensityMapSize: ' .. tostring(getDensityMapSize(g_currentMission.terrainDetailHeightId)))
---     print('   ')
---     DebugUtil.printTableRecursively({
---         worldToDensityMap = g_densityMapHeightManager.worldToDensityMap,
---         fillToGroundScale = g_densityMapHeightManager.fillToGroundScale,
---         volumePerPixel = g_densityMapHeightManager.volumePerPixel,
---         literPerPixel = g_densityMapHeightManager.literPerPixel,
---         minValidLiterValue = g_densityMapHeightManager.minValidLiterValue,
---         minValidVolumeValue = g_densityMapHeightManager.minValidVolumeValue,
---         heightToDensityValue = g_densityMapHeightManager.heightToDensityValue,
---     })
---     print('   ')
---     print('   ')
--- end
+function TerraFarm:debug_print()
+    print('   ')
+    print('getDensityMapSize: ' .. tostring(getDensityMapSize(g_currentMission.terrainDetailHeightId)))
+    print('   ')
+    DebugUtil.printTableRecursively({
+        worldToDensityMap = g_densityMapHeightManager.worldToDensityMap,
+        fillToGroundScale = g_densityMapHeightManager.fillToGroundScale,
+        volumePerPixel = g_densityMapHeightManager.volumePerPixel,
+        literPerPixel = g_densityMapHeightManager.literPerPixel,
+        minValidLiterValue = g_densityMapHeightManager.minValidLiterValue,
+        minValidVolumeValue = g_densityMapHeightManager.minValidVolumeValue,
+        heightToDensityValue = g_densityMapHeightManager.heightToDensityValue,
+    })
+    print('   ')
+    print('   ')
+end
 
 function TerraFarm:onMapLoaded()
     self:loadConfigurations()
@@ -112,7 +112,7 @@ function TerraFarm:getMachineModeByName(name)
 end
 
 function TerraFarm:getInterval()
-    return 50
+    return 100
 end
 
 function TerraFarm:openMenu()

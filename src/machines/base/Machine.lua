@@ -55,6 +55,9 @@
 ---@field onLevelerRaycastCallback function
 ---@field levelerGetIsLevelerPickupNodeActive function
 ---@field onLevelerUpdate function
+--- HEIGHT LOCKING
+--- @field heightLockEnabled boolean
+--- @field heightLockHeight number
 TerraFarmMachine = {}
 local TerraFarmMachine_mt = Class(TerraFarmMachine)
 
@@ -215,6 +218,10 @@ function TerraFarmMachine.new(object, machineType, config, mt)
     self.dischargeFillBuffer = 0
     self.terraformVolumeBuffer = 0
     self.dischargeVolumeBuffer = 0
+
+    -- Height Lock Mode
+    self.heightLockEnabled = false
+    self.heightLockHeight = 0
 
     return self
 end
@@ -422,6 +429,31 @@ function TerraFarmMachine:setDischargeMode(mode)
     self:setStateValue('dischargeMode', mode)
 end
 
+function TerraFarmMachine:toggleHeightLock()
+    local newEnabled = not self.heightLockEnabled
+
+    self:setStateValue('heightLockEnabled', newEnabled)
+
+    if newEnabled then
+        self:setStateValue('heightLockHeight', self:getCurrentHeight())
+    end
+end
+
+function TerraFarmMachine:getCurrentHeight()
+    local x, _, z, height = self:getVehiclePosition()
+    return tonumber(string.format('%.2f', height))
+    -- local totalY = 0
+    -- local numNodes = 0
+
+    -- for i, node in pairs(self.collisionNodes) do
+    --     local position = self.nodePosition[node]
+    --     totalY = totalY + position.y
+    --     numNodes = numNodes + 1
+    -- end
+
+    -- return totalY / numNodes
+end
+
 function TerraFarmMachine:toggleDischargeMode()
     if not self.config.discharge or #self.config.discharge.availableModes <= 1 or not self.dischargeMode then
         return
@@ -579,20 +611,27 @@ function TerraFarmMachine:getFillTypeMassPerLiter()
 end
 
 function TerraFarmMachine:volumeToFillAmount(volume)
+    local amount = 0
     -- local ratio = g_densityMapHeightManager.minValidLiterValue / g_densityMapHeightManager.minValidVolumeValue
     -- return volume * ratio * self:getVolumeFillRatio()
 
     -- return volume / (g_densityMapHeightManager.fillToGroundScale * g_densityMapHeightManager.minValidLiterValue)
     -- return volume / g_densityMapHeightManager.fillToGroundScale
-
-    return (volume / (g_densityMapHeightManager.volumePerPixel / g_densityMapHeightManager.literPerPixel)) * g_densityMapHeightManager.worldToDensityMap
+    amount = (volume / (g_densityMapHeightManager.volumePerPixel / g_densityMapHeightManager.literPerPixel)) * g_densityMapHeightManager.worldToDensityMap
+    amount = amount * .3333
+    
+    print(string.format('Volume to Amount: %.2f -> %.2f', volume, amount))
+    return amount
 end
 
 function TerraFarmMachine:fillAmountToVolume(amount)
     -- local ratio = g_densityMapHeightManager.minValidVolumeValue * g_densityMapHeightManager.minValidLiterValue
     -- return amount * ratio * self:getVolumeFillRatio() * self:getFillTypeMassPerLiter()
     --return g_densityMapHeightManager.fillToGroundScale * amount
-    return amount / g_densityMapHeightManager.worldToDensityMap / (g_densityMapHeightManager.literPerPixel / g_densityMapHeightManager.volumePerPixel)
+    local volume = amount / g_densityMapHeightManager.worldToDensityMap / (g_densityMapHeightManager.literPerPixel / g_densityMapHeightManager.volumePerPixel)
+    volume = volume * 2
+    print(string.format('Amount to Volume: %.2f -> %.2f', amount, volume))
+    return volume
 end
 
 function TerraFarmMachine:addFillAmount(amount, isDischarging)

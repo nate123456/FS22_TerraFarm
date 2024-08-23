@@ -24,6 +24,7 @@
         <action name="TERRAFARM_OPEN_MENU" category="TERRAFARM" />
         <action name="TERRAFARM_TOGGLE_TERRAFORM_MODE" category="TERRAFARM" />
         <action name="TERRAFARM_TOGGLE_DISCHARGE_MODE" category="TERRAFARM" />
+        <action name="TERRAFARM_TOGGLE_HEIGHT_LOCK" category="TERRAFARM" />
     </actions>
 
     <inputBinding>
@@ -42,6 +43,10 @@
         <actionBinding action="TERRAFARM_TOGGLE_DISCHARGE_MODE">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_b" axisComponent="+" neutralInput="0" index="1" />
             <binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_1" axisComponent="+" neutralInput="0" index="1" />
+        </actionBinding>
+        <actionBinding action="TERRAFARM_TOGGLE_HEIGHT_LOCK">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_n" axisComponent="+" neutralInput="0" index="1" />
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_2" axisComponent="+" neutralInput="0" index="1" />
         </actionBinding>
     </inputBinding>
 </modDesc>

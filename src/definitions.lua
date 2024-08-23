@@ -35,6 +35,6 @@ MachineSpec = {}
 ---@field paint number
 MachineRootNodes = {}
 
----@alias InputActionBindingName string | "'enableState'" | "'openMenu'" | "'toggleTerraformMode'" | "'toggleDischargeMode'"
+---@alias InputActionBindingName string | "'enableState'" | "'openMenu'" | "'toggleTerraformMode'" | "'toggleDischargeMode'" | "'toggleHeightLock'"
 
----@alias InputActionText string | "'enableMachine'" | "'disableMachine'" | "'openMenu'" | "'toggleTerraformMode'" | "'toggleDischargeMode'"
+---@alias InputActionText string | "'enableMachine'" | "'disableMachine'" | "'openMenu'" | "'toggleTerraformMode'" | "'toggleDischargeMode'" | "'toggleHeightLock'"

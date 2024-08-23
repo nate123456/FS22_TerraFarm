@@ -145,8 +145,8 @@ function TerraFarmLandscapingEvent:readStream(streamId, connection)
             self.target.z = streamReadFloat32(streamId)
         end
 
-        self.isDischarging = streamReadBool(streamReadBool)
-        self.disableVolumeDisplacement = streamReadBool(streamReadBool)
+        self.isDischarging = streamReadBool(streamId)
+        self.disableVolumeDisplacement = streamReadBool(streamId)
     else
         self.errorCode = streamReadUIntN(streamId, TerrainDeformation.STATE_SEND_NUM_BITS)
 

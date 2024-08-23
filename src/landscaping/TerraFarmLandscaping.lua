@@ -118,6 +118,8 @@ function TerraFarmLandscaping:assignSculptingParameters(deform)
     local strength = self.callbackFunctionTarget.strength or 1.0
     local operation = self.callbackFunctionTarget.operation
     local target = self.callbackFunctionTarget.target
+    local machine = self.callbackFunctionTarget.machine
+    local isDischarging = self.callbackFunctionTarget.isDischarging
 
     if operation == TerraFarmLandscaping.OPERATION.LOWER then
         deform:enableAdditiveDeformationMode()
@@ -126,8 +128,26 @@ function TerraFarmLandscaping:assignSculptingParameters(deform)
         deform:enableAdditiveDeformationMode()
         deform:setAdditiveHeightChangeAmount(0.005)
     elseif operation == TerraFarmLandscaping.OPERATION.FLATTEN then
+        local y = target.y
+
+        if machine.heightLockEnabled then
+            y = machine.heightLockHeight
+        end
+
+        local x, _, z, height, _ = machine:getVehiclePosition()
+
+        if isDischarging and target.y > height then
+            -- print("Discharging flatten target is too high")
+            return false
+        end
+
+        if not isDischarging and target.y < height then
+            -- print("Discharging flatten target is too low")
+            return false
+        end
+
         deform:setAdditiveHeightChangeAmount(0.05)
-        deform:setHeightTarget(target.y, target.y, 0, 1, 0, -target.y)
+        deform:setHeightTarget(y, y, 0, 1, 0, -y)
         deform:enableSetDeformationMode()
     end
 
@@ -171,7 +191,11 @@ function TerraFarmLandscaping:apply()
         end
         deform:apply(false, 'onSculptingApplied', self)
     else
-        self:assignSculptingParameters(deform)
+        local shouldStop = self:assignSculptingParameters(deform)
+
+        if shouldStop then
+            return
+        end
 
         deform:setBlockedAreaMaxDisplacement(0.00001)
         deform:setDynamicObjectCollisionMask(0)
@@ -231,6 +255,8 @@ function TerraFarmLandscaping:applyDensityMapChanges()
 end
 
 function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrArea)
+    -- displacedVolumeOrArea = displacedVolumeOrArea * .75
+
     if errorCode == TerrainDeformation.STATE_SUCCESS then
         local operation = self.callbackFunctionTarget.operation
         local disableVolumeDisplacement = self.callbackFunctionTarget.disableVolumeDisplacement
@@ -257,6 +283,7 @@ function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrAre
                 elseif operation == TerraFarmLandscaping.OPERATION.LOWER then
                     machine:onVolumeDisplacement(volume, isDischarging)
                 elseif operation == TerraFarmLandscaping.OPERATION.FLATTEN then
+
                     if isDischarging and not machine.type.hasLevelerFunctions then
                         machine:onVolumeDisplacement(-volume, isDischarging)
                     else

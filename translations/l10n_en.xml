@@ -54,13 +54,14 @@
         <!-- INPUT DISPLAY -->
         <text name="ENABLE_MACHINE" text="Enable TerraFarm" />
         <text name="DISABLE_MACHINE" text="Disable TerraFarm" />
-        <text name="TOGGLE_TERRAFORM_MODE" text="Toggle terraform mode" />
-        <text name="TOGGLE_DISCHARGE_MODE" text="Toggle discharge mode" />
+        <text name="TOGGLE_TERRAFORM_MODE" text="Toggle load mode" />
+        <text name="TOGGLE_DISCHARGE_MODE" text="Toggle unload mode" />
         <text name="OPEN_MENU" text="Open TerraFarm menu" />
+        <text name="TOGGLE_HEIGHT_LOCK" text="Toggle Flatten Height Lock Cutie ;)" />
 
         <!-- MISC -->
-        <text name="MODE_TERRAFORM" text="Terraform" />
-        <text name="MODE_DISCHARGE" text="Discharge" />
+        <text name="MODE_TERRAFORM" text="Load" />
+        <text name="MODE_DISCHARGE" text="Unload" />
 
         <!-- MACHINE MODES -->
         <text name="MACHINE_MODE_INVALID" text="Invalid mode" />
@@ -74,7 +75,8 @@
         <!-- INPUT BINDINGS DESCRIPTIONS -->
         <text name="input_TERRAFARM_TOGGLE_ENABLE" text="Enable TerraFarm on active vehicle" />
         <text name="input_TERRAFARM_OPEN_MENU" text="Open TerraFarm menu" />
-        <text name="input_TERRAFARM_TOGGLE_TERRAFORM_MODE" text="Toggle terraform mode" />
-        <text name="input_TERRAFARM_TOGGLE_DISCHARGE_MODE" text="Toggle discharge mode" />
+        <text name="input_TERRAFARM_TOGGLE_TERRAFORM_MODE" text="Toggle Load mode" />
+        <text name="input_TERRAFARM_TOGGLE_DISCHARGE_MODE" text="Toggle Unload mode" />
+        <text name="input_TERRAFARM_TOGGLE_HEIGHT_LOCK" text="Toggle Terraform Flatten Height Lock" />
     </texts>
 </l10n>

@@ -60,6 +60,9 @@ function MachineStateEvent:writeStream(streamId)
     streamWriteUIntN(streamId, self.machine.smoothRadiusPct, TerraFarmMachine.MODIFIER_NUM_BITS)
 
     streamWriteUIntN(streamId, self.machine.paintRadiusPct, TerraFarmMachine.MODIFIER_NUM_BITS)
+
+    streamWriteBool(streamId, self.machine.heightLockEnabled)
+    streamWriteFloat32(streamId, self.machine.heightLockHeight)
 end
 
 function MachineStateEvent:readStream(streamId, connection)
@@ -101,6 +104,9 @@ function MachineStateEvent:readStream(streamId, connection)
     self.machine.smoothRadiusPct = streamReadUIntN(streamId, TerraFarmMachine.MODIFIER_NUM_BITS)
 
     self.machine.paintRadiusPct = streamReadUIntN(streamId, TerraFarmMachine.MODIFIER_NUM_BITS)
+
+    self.machine.heightLockEnabled = streamReadBool(streamId)
+    self.machine.heightLockHeight = streamReadFloat32(streamId)
 
     self.machine:onStateUpdated()
 

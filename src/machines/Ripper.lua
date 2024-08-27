@@ -14,11 +14,11 @@ function TerraFarmRipper:getIsAttachable()
     return true
 end
 
-function TerraFarmRipper:onVolumeDisplacement(volume)
+function TerraFarmRipper:onVolumeDisplacement(fillDelta)
     if self:getDrivingDirection() < 0 then return end
 
     if self.disableDischarge ~= true then
-        self:dischargeFillTypeToNodeLines(self:volumeToFillAmount(volume))
+        self:dischargeFillTypeToNodeLines(fillDelta)
     end
 end
 

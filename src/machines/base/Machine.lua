@@ -294,7 +294,7 @@ function TerraFarmMachine:updateFillType()
             self.fillUnit.fillUnitIndex,
             self.fillTypeIndex
         )
-        self:addFillAmount(0)
+        self:applyFillDelta(0)
     end
 end
 
@@ -610,37 +610,13 @@ function TerraFarmMachine:getFillTypeMassPerLiter()
     return fillType.massPerLiter * 1000  -- The value read from XML is divided by 1000
 end
 
-function TerraFarmMachine:volumeToFillAmount(volume)
-    local amount = 0
-    -- local ratio = g_densityMapHeightManager.minValidLiterValue / g_densityMapHeightManager.minValidVolumeValue
-    -- return volume * ratio * self:getVolumeFillRatio()
-
-    -- return volume / (g_densityMapHeightManager.fillToGroundScale * g_densityMapHeightManager.minValidLiterValue)
-    -- return volume / g_densityMapHeightManager.fillToGroundScale
-    amount = (volume / (g_densityMapHeightManager.volumePerPixel / g_densityMapHeightManager.literPerPixel)) * g_densityMapHeightManager.worldToDensityMap
-    amount = amount * .3333
-    
-    print(string.format('Volume to Amount: %.2f -> %.2f', volume, amount))
-    return amount
-end
-
-function TerraFarmMachine:fillAmountToVolume(amount)
-    -- local ratio = g_densityMapHeightManager.minValidVolumeValue * g_densityMapHeightManager.minValidLiterValue
-    -- return amount * ratio * self:getVolumeFillRatio() * self:getFillTypeMassPerLiter()
-    --return g_densityMapHeightManager.fillToGroundScale * amount
-    local volume = amount / g_densityMapHeightManager.worldToDensityMap / (g_densityMapHeightManager.literPerPixel / g_densityMapHeightManager.volumePerPixel)
-    volume = volume * 2
-    print(string.format('Amount to Volume: %.2f -> %.2f', amount, volume))
-    return volume
-end
-
-function TerraFarmMachine:addFillAmount(amount, isDischarging)
+function TerraFarmMachine:applyFillDelta(fillDelta)
     if not self.type.hasFillUnit then return 0 end
 
     return self.object:addFillUnitFillLevel(
         self.object:getOwnerFarmId(),
         self.fillUnit.fillUnitIndex,
-        amount,
+        fillDelta,
         self.fillTypeIndex,
         ToolType.UNDEFINED
     )
@@ -827,7 +803,7 @@ end
 function TerraFarmMachine:onUpdate(dt)
 end
 
-function TerraFarmMachine:onVolumeDisplacement(volume, isDischarging)
+function TerraFarmMachine:onVolumeDisplacement(fillDelta, isDischarging)
 end
 
 function TerraFarmMachine:onDischarge()

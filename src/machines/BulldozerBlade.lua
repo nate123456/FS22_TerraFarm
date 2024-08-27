@@ -16,15 +16,15 @@ function TerraFarmBulldozerBlade:getIsAttachable()
     return true
 end
 
-function TerraFarmBulldozerBlade:onVolumeDisplacement(volume)
+function TerraFarmBulldozerBlade:onVolumeDisplacement(fillDelta)
     if self:getDrivingDirection() < 0 then return end
 
     if self:getIsFull() then
         if self.disableDischarge ~= true then
-            self:dischargeFillTypeToNodeLines(self:volumeToFillAmount(volume))
+            self:dischargeFillTypeToNodeLines(fillDelta)
         end
     else
-        self:addFillAmount(self:volumeToFillAmount(volume))
+        self:applyFillDelta(fillDelta)
     end
 end
 

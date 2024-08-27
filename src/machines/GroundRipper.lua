@@ -11,8 +11,8 @@ function TerraFarmGroundRipper.new(object, config, mt)
     return self
 end
 
-function TerraFarmGroundRipper:onVolumeDisplacement(volume, isDischarging)
-    self:addFillAmount(self:volumeToFillAmount(volume), isDischarging)
+function TerraFarmGroundRipper:onVolumeDisplacement(fillDelta)
+    self:applyFillDelta(fillDelta)
 end
 
 function TerraFarmGroundRipper:getIsAvailable()

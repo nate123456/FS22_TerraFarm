@@ -28,18 +28,18 @@ function TerraFarmSuctionAttachment:updateFillType()
             fillUnit.fillUnitIndex,
             self.fillTypeIndex
         )
-        self:addFillAmount(0)
+        self:applyFillDelta(0)
     end
 end
 
-function TerraFarmSuctionAttachment:addFillAmount(amount)
+function TerraFarmSuctionAttachment:applyFillDelta(fillDelta)
     local fillUnit, vehicle = self:getVehicleFillUnit()
 
     if fillUnit then
         vehicle:addFillUnitFillLevel(
             vehicle:getOwnerFarmId(),
             fillUnit.fillUnitIndex,
-            amount,
+            fillDelta,
             self.fillTypeIndex,
             ToolType.UNDEFINED
         )
@@ -117,6 +117,6 @@ function TerraFarmSuctionAttachment:getFillPercentage()
     return 0
 end
 
-function TerraFarmSuctionAttachment:onVolumeDisplacement(volume)
-    self:addFillAmount(self:volumeToFillAmount(volume))
+function TerraFarmSuctionAttachment:onVolumeDisplacement(fillDelta)
+    self:applyFillDelta(fillDelta)
 end

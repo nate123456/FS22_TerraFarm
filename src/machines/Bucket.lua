@@ -11,8 +11,8 @@ function TerraFarmBucket.new(object, config, mt)
     return self
 end
 
-function TerraFarmBucket:onVolumeDisplacement(volume, isDischarging)
-    self:addFillAmount(self:volumeToFillAmount(volume), isDischarging)
+function TerraFarmBucket:onVolumeDisplacement(fillDelta)
+    self:applyFillDelta(fillDelta)
 end
 
 function TerraFarmBucket:getIsAttachable()
@@ -34,17 +34,8 @@ function TerraFarmBucket:onDischarge()
 
     if self.dischargeMode == TerraFarmMachine.MODE.SMOOTH then
         self:applyDischargeSmooth()
-    elseif self.dischargeMode == TerraFarmMachine.MODE.RAISE then
+    elseif self.dischargeMode == TerraFarmMachine.MODE.RAISE or self.dischargeMode == TerraFarmMachine.MODE.FLATTEN then
         self:applyDischargeRaise()
-    elseif self.dischargeMode == TerraFarmMachine.MODE.FLATTEN then
-        local x, _, z, height = self:getVehiclePosition()
-
-        if x and height then
-            local target = { x = x, y = height, z = z }
-            self:applyDischargeFlatten(target)
-        else
-            Logging.warning('[TerraFarmBucket:onDischarge] Unable to get vehicle position data ..')
-        end
     elseif self.dischargeMode == TerraFarmMachine.MODE.PAINT then
         -- self:applyDischargePaint(self:getPaintRadius())
         self:applyDischargePaint()

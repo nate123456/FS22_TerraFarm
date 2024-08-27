@@ -7,6 +7,8 @@
 ---@field currentTerrainDeformation TerrainDeformation
 ---@field callbackFunction function
 ---@field callbackFunctionTarget TerraFarmLandscapingEvent
+---@field preTerraformHeights table
+---@field action string
 TerraFarmLandscaping = {}
 local TerraFarmLandscaping_mt = Class(TerraFarmLandscaping)
 
@@ -41,9 +43,10 @@ function TerraFarmLandscaping.new(callbackFunction, callbackFunctionTarget)
     self.terrainUnit = Landscaping.TERRAIN_UNIT
     self.halfTerrainUnit = Landscaping.TERRAIN_UNIT / 2
     self.modifiedAreas = {}
-
+    self.preTerraformHeights = {}
     self.callbackFunction = callbackFunction
     self.callbackFunctionTarget = callbackFunctionTarget
+    self.action = nil
 
     return self
 end
@@ -121,34 +124,22 @@ function TerraFarmLandscaping:assignSculptingParameters(deform)
     local machine = self.callbackFunctionTarget.machine
     local isDischarging = self.callbackFunctionTarget.isDischarging
 
-    if operation == TerraFarmLandscaping.OPERATION.LOWER then
+    if isDischarging then
+        self.action = 'raise'
         deform:enableAdditiveDeformationMode()
-        deform:setAdditiveHeightChangeAmount(-0.005)
-    elseif operation == TerraFarmLandscaping.OPERATION.RAISE then
-        deform:enableAdditiveDeformationMode()
-        deform:setAdditiveHeightChangeAmount(0.005)
-    elseif operation == TerraFarmLandscaping.OPERATION.FLATTEN then
-        local y = target.y
-
+        deform:setAdditiveHeightChangeAmount(0.0025)
+    else
         if machine.heightLockEnabled then
-            y = machine.heightLockHeight
+            self.action = 'flatten'
+            local y = machine.heightLockHeight
+            deform:setHeightTarget(y, y, 0, 1, 0, -y)
+            deform:setAdditiveHeightChangeAmount(0.75)
+            deform:enableSetDeformationMode()
+        else
+            self.action = 'lower'
+            deform:enableAdditiveDeformationMode()
+            deform:setAdditiveHeightChangeAmount(-0.0025)
         end
-
-        local x, _, z, height, _ = machine:getVehiclePosition()
-
-        if isDischarging and target.y > height then
-            -- print("Discharging flatten target is too high")
-            return false
-        end
-
-        if not isDischarging and target.y < height then
-            -- print("Discharging flatten target is too low")
-            return false
-        end
-
-        deform:setAdditiveHeightChangeAmount(0.05)
-        deform:setHeightTarget(y, y, 0, 1, 0, -y)
-        deform:enableSetDeformationMode()
     end
 
     if brushShape == Landscaping.BRUSH_SHAPE.CIRCLE then
@@ -182,7 +173,7 @@ function TerraFarmLandscaping:apply()
         deform:setDynamicObjectCollisionMask(0)
         deform:setDynamicObjectMaxDisplacement(0.00003)
 
-        self.terrainDeformationQueue:queueJob(deform, false, 'onSculptingApplied', self)
+        self.terrainDeformationQueue:queueJob(deform, true, 'onSculptingValidated', self)
     elseif operation == TerraFarmLandscaping.OPERATION.PAINT or operation == TerraFarmLandscaping.OPERATION.TERRAFORM_PAINT then
         if machine.disablePaint ~= true then
             self:assignPaintingParameters(deform)
@@ -201,8 +192,96 @@ function TerraFarmLandscaping:apply()
         deform:setDynamicObjectCollisionMask(0)
         deform:setDynamicObjectMaxDisplacement(0.00003)
 
-        self.terrainDeformationQueue:queueJob(deform, false, 'onSculptingApplied', self)
+        self.terrainDeformationQueue:queueJob(deform, true, 'onSculptingValidated', self)
     end
+end
+
+function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrArea, blocked) 
+    local machine = self.callbackFunctionTarget.machine
+    local maxHeight = machine.heightLockHeight
+
+    if errorCode ~= TerrainDeformation.STATE_SUCCESS then
+        Logging.warning('Validation failed, terraform did not succeed')
+        self.currentTerrainDeformation:cancel()
+        return
+    end
+
+    if #self.modifiedAreas == 0 then
+        Logging.warning('Validation failed, terraform did not have any modified areas')
+        self.currentTerrainDeformation:cancel()
+        return
+    end
+
+    if displacedVolumeOrArea == 0 then
+        Logging.warning('Validation failed, terraform did not displace any volume or area')
+        self.currentTerrainDeformation:cancel()
+        return
+    end
+
+    for i, area in ipairs(self.modifiedAreas) do
+        local x1, z1, x2, z2, x3, z3 = unpack(area)
+        local height1 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x1, 0, z1)
+        local height2 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x2, 0, z2)
+        local height3 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x3, 0, z3)
+
+        self.preTerraformHeights[i] = {height1, height2, height3 }
+    end
+
+    local fillAmount = self:volumeToFillDelta(displacedVolumeOrArea)
+    local fillLevel = machine:getFillLevel()
+    local fillCapacity = machine:getFillCapacity()
+
+    if self.action == 'raise' then
+        if fillAmount > fillLevel then
+            Logging.warning('Validation failed, terraform raised more volume than available in the bucket')
+            self.currentTerrainDeformation:cancel()
+            return
+        end
+    elseif self.action == 'lower' then
+        if fillAmount > fillCapacity then
+            Logging.warning('Validation failed, terraform lowered more volume than available in the bucket')
+            self.currentTerrainDeformation:cancel()
+            return
+        end
+    elseif self.action == 'flatten' then
+        local overs = 0
+        local unders = 0
+        for _, heights in ipairs(self.preTerraformHeights) do
+            for _, height in ipairs(heights) do
+                if height > maxHeight then
+                    overs = overs + 1
+                elseif height < maxHeight then
+                    unders = unders + 1
+                end
+            end
+        end
+        
+        if overs ~= 0 or unders ~= 0 then
+            local totalVertices = overs + unders
+            local raiseVolumeCost = (unders / totalVertices * fillAmount) * -1
+            local lowerVolumeCost = overs / totalVertices * fillAmount
+            local fillDelta = raiseVolumeCost + lowerVolumeCost
+
+            local newFillLevel = fillLevel + fillDelta
+            -- Logging.info('Flatten Fill: ' .. fillAmount .. ', Overs: ' .. overs .. ', Unders: ' .. unders .. ', Raise: ' .. raiseVolumeCost .. ', Lower: ' .. lowerVolumeCost .. ', Total: ' .. totalCost .. ', New Fill: ' .. newFillLevel)
+
+            if newFillLevel < 0 then
+                Logging.info('Validation failed, not enough material in the bucket')
+                self.currentTerrainDeformation:cancel()
+                return
+            elseif newFillLevel > fillCapacity then
+                Logging.info('Validation failed, not enough room in the bucket')
+                self.currentTerrainDeformation:cancel()
+                return
+            end
+        else
+            Logging.warning('Validation failed, terraform did not have any vertices to flatten')
+            self.currentTerrainDeformation:cancel()
+            return
+        end
+    end
+
+    self.terrainDeformationQueue:queueJob(self.currentTerrainDeformation, false, "onSculptingApplied", self)
 end
 
 function TerraFarmLandscaping:applyDensityMapChanges()
@@ -255,56 +334,82 @@ function TerraFarmLandscaping:applyDensityMapChanges()
 end
 
 function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrArea)
-    -- displacedVolumeOrArea = displacedVolumeOrArea * .75
-
     if errorCode == TerrainDeformation.STATE_SUCCESS then
         local operation = self.callbackFunctionTarget.operation
         local disableVolumeDisplacement = self.callbackFunctionTarget.disableVolumeDisplacement
 
         if operation ~= TerraFarmLandscaping.OPERATION.PAINT and operation ~= TerraFarmLandscaping.OPERATION.TERRAFORM_PAINT and disableVolumeDisplacement ~= true then
-
-            local machine = self.callbackFunctionTarget.machine
-            local isDischarging = self.callbackFunctionTarget.isDischarging
-
-            local volume = 0
-            if isDischarging then
-                machine.dischargeVolumeBuffer = machine.dischargeVolumeBuffer + displacedVolumeOrArea
-                volume = machine.dischargeVolumeBuffer
-            else
-                machine.terraformVolumeBuffer = machine.terraformVolumeBuffer + displacedVolumeOrArea
-                volume = machine.terraformVolumeBuffer
-            end
-
-            if volume > g_densityMapHeightManager.minValidVolumeValue then
-                self:applyDensityMapChanges()
-
-                if operation == TerraFarmLandscaping.OPERATION.RAISE then
-                    machine:onVolumeDisplacement(0 - volume, isDischarging)
-                elseif operation == TerraFarmLandscaping.OPERATION.LOWER then
-                    machine:onVolumeDisplacement(volume, isDischarging)
-                elseif operation == TerraFarmLandscaping.OPERATION.FLATTEN then
-
-                    if isDischarging and not machine.type.hasLevelerFunctions then
-                        machine:onVolumeDisplacement(-volume, isDischarging)
-                    else
-                        machine:onVolumeDisplacement(volume, isDischarging)
-                    end
-                elseif operation == TerraFarmLandscaping.OPERATION.SMOOTH then
-                    if isDischarging and not machine.type.hasLevelerFunctions then
-                        machine:onVolumeDisplacement(-volume, isDischarging)
-                    else
-                        machine:onVolumeDisplacement(volume, isDischarging)
-                    end
-                end
-
-                if isDischarging then
-                    machine.dischargeVolumeBuffer = 0
+            if displacedVolumeOrArea > g_densityMapHeightManager.minValidVolumeValue and #self.modifiedAreas > 0 then
+                if #self.modifiedAreas ~= #self.preTerraformHeights then
+                    Logging.warning('Modified areas and pre terraform heights do not match by length: ' .. #self.modifiedAreas .. ' vs ' .. #self.preTerraformHeights)
+                    DebugUtil.printTableRecursively(self.modifiedAreas, "modifiedAreas")
+                    DebugUtil.printTableRecursively(self.preTerraformHeights, "preTerraformHeights")
+                    DebugUtil.printTableRecursively(self.currentTerrainDeformation, "currentTerrainDeformation")
+                    print('volume: ' .. displacedVolumeOrArea)
+                    print('errorCode: ' .. errorCode)
                 else
-                    machine.terraformVolumeBuffer = 0
+                    local raisedVerticeCount = 0
+                    local loweredVerticeCount = 0
+        
+                    for i, area in ipairs(self.modifiedAreas) do
+                        local x1, z1, x2, z2, x3, z3 = unpack(area)
+                        local preHeight1, preHeight2, preHeight3 = unpack(self.preTerraformHeights[i])
+                        
+                        local postHeight1 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x1, 0, z1)
+                        local postHeight2 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x2, 0, z2)
+                        local postHeight3 = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x3, 0, z3)
+            
+                        local heightChange1 = postHeight1 - preHeight1
+                        local heightChange2 = postHeight2 - preHeight2
+                        local heightChange3 = postHeight3 - preHeight3
+        
+                        if heightChange1 > 0 then
+                            raisedVerticeCount = raisedVerticeCount + 1
+                        elseif heightChange1 < 0 then
+                            loweredVerticeCount = loweredVerticeCount + 1
+                        end
+                        if heightChange2 > 0 then
+                            raisedVerticeCount = raisedVerticeCount + 1
+                        elseif heightChange2 < 0 then
+                            loweredVerticeCount = loweredVerticeCount + 1
+                        end
+                        if heightChange3 > 0 then
+                            raisedVerticeCount = raisedVerticeCount + 1
+                        elseif heightChange3 < 0 then
+                            loweredVerticeCount = loweredVerticeCount + 1
+                        end
+                    end
+        
+                    -- there is sometimes volume reported when with no vertices raised or lowered.
+                    if raisedVerticeCount ~= 0 or loweredVerticeCount ~= 0 then
+                        local totalVertices = raisedVerticeCount + loweredVerticeCount
+                        local raiseVolume = (raisedVerticeCount / totalVertices * displacedVolumeOrArea) * -1
+                        local lowerVolume = loweredVerticeCount / totalVertices * displacedVolumeOrArea
+                        local volumeDelta = raiseVolume + lowerVolume
+        
+                        Logging.info(self.action .. ' Raw: ' .. displacedVolumeOrArea .. ', Raises: ' .. raisedVerticeCount .. ', Lowers: ' .. loweredVerticeCount .. ', Total: ' .. totalVertices .. ', Ratioed: ' .. volumeDelta)
+        
+                        local isDischarging = self.callbackFunctionTarget.isDischarging
+                        local machine = self.callbackFunctionTarget.machine
+        
+                        -- makes bucket fill amount more effective the lower the cost of the material.
+                        local finalVolumeDelta = volumeDelta * .75
+        
+                        if self.action == 'raise' then
+                        elseif self.action == 'lower' then
+                        elseif self.action == 'flatten' then
+                            -- flattenening a full bucket of material after it was dumped to raise the land
+                            -- only returns about half the material.
+                            finalVolumeDelta = finalVolumeDelta * 2
+                        end
+
+                        local fillDelta = self:volumeToFillDelta(finalVolumeDelta)
+                        
+                        machine:onVolumeDisplacement(fillDelta, isDischarging)
+                        self:applyDensityMapChanges()
+                    end
                 end
             end
-
-
         elseif operation == TerraFarmLandscaping.OPERATION.PAINT or operation == TerraFarmLandscaping.OPERATION.TERRAFORM_PAINT then
             self:applyDensityMapChanges()
         end
@@ -314,4 +419,17 @@ function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrAre
 
     self.currentTerrainDeformation:delete()
     self.currentTerrainDeformation = nil
+end
+
+function TerraFarmLandscaping:volumeToFillDelta(volume)
+    local amount = 0
+    -- local ratio = g_densityMapHeightManager.minValidLiterValue / g_densityMapHeightManager.minValidVolumeValue
+    -- return volume * ratio * self:getVolumeFillRatio()
+
+    -- return volume / (g_densityMapHeightManager.fillToGroundScale * g_densityMapHeightManager.minValidLiterValue)
+    -- return volume / g_densityMapHeightManager.fillToGroundScale
+    amount = (volume / (g_densityMapHeightManager.volumePerPixel / g_densityMapHeightManager.literPerPixel)) * g_densityMapHeightManager.worldToDensityMap
+    -- amount = amount * .3333
+    --print(string.format('Volume to Amount: %.2f -> %.2f', volume, amount))
+    return amount
 end

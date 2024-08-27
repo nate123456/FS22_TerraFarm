@@ -98,15 +98,15 @@ function TerraFarmRoadScraper:getBladeRotation()
     return rot[axis], axis, self.rootNodes.rotation
 end
 
-function TerraFarmRoadScraper:onVolumeDisplacement(volume)
+function TerraFarmRoadScraper:onVolumeDisplacement(fillDelta)
     if self:getDrivingDirection() < 0 then return end
 
     if self:getIsFull() then
         if self.disableDischarge ~= true then
-            self:dischargeFillTypeToNodeLines(self:volumeToFillAmount(volume))
+            self:dischargeFillTypeToNodeLines(fillDelta)
         end
     else
-        self:addFillAmount(self:volumeToFillAmount(volume))
+        self:applyFillDelta(fillDelta)
     end
 end
 

@@ -12,7 +12,9 @@ function TerraFarmBucket.new(object, config, mt)
 end
 
 function TerraFarmBucket:onVolumeDisplacement(fillDelta)
-    self:applyFillDelta(fillDelta)
+    if not self:applyFillDelta(fillDelta) then
+        print('TerraFarmBucket:onVolumeDisplacement() failed')
+    end
 end
 
 function TerraFarmBucket:getIsAttachable()

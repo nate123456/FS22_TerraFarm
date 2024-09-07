@@ -105,6 +105,24 @@ end
 
 function TerraFarm:onDraw()
     g_machineHUD:draw()
+    self:drawNodeLevels()
+end
+
+function TerraFarm:drawNodeLevels()
+    local machine = g_machineManager:getCurrentMachine()
+
+    if not machine then
+        return
+    end
+
+    local vehicle = machine:getVehicle()
+
+    if vehicle then
+        local x, y, z = getWorldTranslation(vehicle.rootNode)
+        local height = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x, 0, z)
+
+        Utils.renderTextAtWorldPosition(x, height, z, "B", getCorrectTextSize(0.1), 0, TerraFarm.colorBelow)
+    end
 end
 
 function TerraFarm:getMachineModeByName(name)
@@ -135,6 +153,10 @@ function TerraFarm:setupGUI()
 
     -- Load screen last
     g_gui:loadGui(modFolder .. 'xml/TerraFarmSettingsScreen.xml', 'TerraFarmSettingsScreen', g_terraFarmSettingsScreen)
+end
+
+function TerraFarm:getMachineManager()
+    return g_machineManager
 end
 
 FSBaseMission.onStartMission = Utils.appendedFunction(FSBaseMission.onStartMission,

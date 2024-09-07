@@ -441,7 +441,7 @@ end
 
 function TerraFarmMachine:getCurrentHeight()
     local x, _, z, height = self:getVehiclePosition()
-    return tonumber(string.format('%.2f', height))
+    return tonumber(string.format("%.2f", height))
     -- local totalY = 0
     -- local numNodes = 0
 
@@ -719,7 +719,8 @@ end
 -- Node functionality
 
 function TerraFarmMachine:getIsTouchingTerrain()
-    return self.terraformNodesIsTouchingTerrain or self.collisionNodesIsTouchingTerrain
+    local isTouchingTerrain = self.terraformNodesIsTouchingTerrain or self.collisionNodesIsTouchingTerrain
+    return isTouchingTerrain
 end
 
 function TerraFarmMachine:updateNodes()

@@ -182,11 +182,7 @@ function TerraFarmLandscaping:apply()
         end
         deform:apply(false, 'onSculptingApplied', self)
     else
-        local shouldStop = self:assignSculptingParameters(deform)
-
-        if shouldStop then
-            return
-        end
+        self:assignSculptingParameters(deform)
 
         deform:setBlockedAreaMaxDisplacement(0.00001)
         deform:setDynamicObjectCollisionMask(0)
@@ -196,25 +192,25 @@ function TerraFarmLandscaping:apply()
     end
 end
 
-function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrArea, blocked) 
+function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrArea, blocked)
     local machine = self.callbackFunctionTarget.machine
     local maxHeight = machine.heightLockHeight
 
     if errorCode ~= TerrainDeformation.STATE_SUCCESS then
         Logging.warning('Validation failed, terraform did not succeed')
-        self.currentTerrainDeformation:cancel()
+        self:abortSculpting()
         return
     end
 
     if #self.modifiedAreas == 0 then
         Logging.warning('Validation failed, terraform did not have any modified areas')
-        self.currentTerrainDeformation:cancel()
+        self:abortSculpting()
         return
     end
 
     if displacedVolumeOrArea == 0 then
         Logging.warning('Validation failed, terraform did not displace any volume or area')
-        self.currentTerrainDeformation:cancel()
+        self:abortSculpting()
         return
     end
 
@@ -234,13 +230,13 @@ function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrA
     if self.action == 'raise' then
         if fillAmount > fillLevel then
             Logging.warning('Validation failed, terraform raised more volume than available in the bucket')
-            self.currentTerrainDeformation:cancel()
+            self:abortSculpting()
             return
         end
     elseif self.action == 'lower' then
         if fillAmount > fillCapacity then
             Logging.warning('Validation failed, terraform lowered more volume than available in the bucket')
-            self.currentTerrainDeformation:cancel()
+            self:abortSculpting()
             return
         end
     elseif self.action == 'flatten' then
@@ -255,7 +251,7 @@ function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrA
                 end
             end
         end
-        
+
         if overs ~= 0 or unders ~= 0 then
             local totalVertices = overs + unders
             local raiseVolumeCost = (unders / totalVertices * fillAmount) * -1
@@ -263,25 +259,31 @@ function TerraFarmLandscaping:onSculptingValidated(errorCode, displacedVolumeOrA
             local fillDelta = raiseVolumeCost + lowerVolumeCost
 
             local newFillLevel = fillLevel + fillDelta
-            -- Logging.info('Flatten Fill: ' .. fillAmount .. ', Overs: ' .. overs .. ', Unders: ' .. unders .. ', Raise: ' .. raiseVolumeCost .. ', Lower: ' .. lowerVolumeCost .. ', Total: ' .. totalCost .. ', New Fill: ' .. newFillLevel)
+            Logging.info('Flatten Fill: ' .. fillAmount .. ', Overs: ' .. overs .. ', Unders: ' .. unders .. ', Raise: ' .. raiseVolumeCost .. ', Lower: ' .. lowerVolumeCost .. ', Delta: ' .. fillDelta .. ', New Fill: ' .. newFillLevel)
 
             if newFillLevel < 0 then
                 Logging.info('Validation failed, not enough material in the bucket')
-                self.currentTerrainDeformation:cancel()
+                self:abortSculpting()
                 return
             elseif newFillLevel > fillCapacity then
                 Logging.info('Validation failed, not enough room in the bucket')
-                self.currentTerrainDeformation:cancel()
+                self:abortSculpting()
                 return
             end
         else
             Logging.warning('Validation failed, terraform did not have any vertices to flatten')
-            self.currentTerrainDeformation:cancel()
+            self:abortSculpting()
             return
         end
     end
 
     self.terrainDeformationQueue:queueJob(self.currentTerrainDeformation, false, "onSculptingApplied", self)
+end
+
+function TerraFarmLandscaping:abortSculpting()
+    self.currentTerrainDeformation:cancel()
+    self.currentTerrainDeformation:delete()
+    self.currentTerrainDeformation = nil
 end
 
 function TerraFarmLandscaping:applyDensityMapChanges()
@@ -389,7 +391,6 @@ function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrAre
         
                         Logging.info(self.action .. ' Raw: ' .. displacedVolumeOrArea .. ', Raises: ' .. raisedVerticeCount .. ', Lowers: ' .. loweredVerticeCount .. ', Total: ' .. totalVertices .. ', Ratioed: ' .. volumeDelta)
         
-                        local isDischarging = self.callbackFunctionTarget.isDischarging
                         local machine = self.callbackFunctionTarget.machine
         
                         -- makes bucket fill amount more effective the lower the cost of the material.
@@ -405,7 +406,7 @@ function TerraFarmLandscaping:onSculptingApplied(errorCode, displacedVolumeOrAre
 
                         local fillDelta = self:volumeToFillDelta(finalVolumeDelta)
                         
-                        machine:onVolumeDisplacement(fillDelta, isDischarging)
+                        machine:onVolumeDisplacement(fillDelta)
                         self:applyDensityMapChanges()
                     end
                 end

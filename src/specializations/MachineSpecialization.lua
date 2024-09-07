@@ -281,32 +281,6 @@ function MachineSpecialization.updateActionEvents(vehicle)
         return
     end
 
-    local isActiveForInputIgnoreSelection = vehicle:getIsActiveForInput(true)
-    local isActiveForInput = vehicle:getIsActiveForInput()
-
-    local isActive = isActiveForInputIgnoreSelection
-
-    if machine:getIsAttachable() and machine:getNumMachinesOnVehicle() > 1 then
-        isActive = isActiveForInput
-    end
-
-    if not isActive or not g_terraFarm:getIsEnabled() then
-        if spec.type.hasDischargeMode then
-            MachineSpecialization.updateActionEvent(spec, 'toggleDischargeMode', false)
-        end
-        if spec.type.hasTerraformMode then
-            MachineSpecialization.updateActionEvent(spec, 'toggleTerraformMode', false)
-        end
-        MachineSpecialization.updateActionEvent(spec, 'enableState', false)
-        MachineSpecialization.updateActionEvent(spec, 'openMenu', false)
-
-        if machine == g_machineManager:getCurrentMachine() then
-            g_machineManager:setCurrentMachine()
-        end
-
-        return
-    end
-
     if machine ~= g_machineManager:getCurrentMachine() then
         g_machineManager:setCurrentMachine(machine)
     end

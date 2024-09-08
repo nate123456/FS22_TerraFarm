@@ -8,6 +8,11 @@ local modFolder = g_currentModDirectory
 ---@field isServer boolean
 ---@field isClient boolean
 TerraFarm = {}
+
+TerraFarm.colorBelowLockedHeight = { 1, 0, 0, 1 }
+TerraFarm.colorAtLockedHeight = { 0, 0.8, 0.9, 1 }
+TerraFarm.colorAboveLockedHeight = { 0.5, 0.3, 0.7, 1 }
+
 local TerraFarm_mt = Class(TerraFarm)
 
 ---@return TerraFarm
@@ -115,13 +120,34 @@ function TerraFarm:drawNodeLevels()
         return
     end
 
+    if not machine.object:getIsActiveForInput(true, true) then
+        return
+    end
+
     local vehicle = machine:getVehicle()
 
     if vehicle then
         local x, y, z = getWorldTranslation(vehicle.rootNode)
         local height = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x, 0, z)
 
-        Utils.renderTextAtWorldPosition(x, height, z, "B", getCorrectTextSize(0.1), 0, TerraFarm.colorBelow)
+        if machine.heightLockEnabled then
+            for abs = x-5, x+5, 0.5 do
+                for ord = z-5, z+5, 0.5 do
+                    local nHeight = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, abs, 0, ord)
+                    local nodeHeight = tonumber(string.format("%.2f", nHeight))
+
+                    local color = TerraFarm.colorAtLockedHeight
+
+                    if nodeHeight < machine.heightLockHeight then
+                        color = TerraFarm.colorBelowLockedHeight
+                    elseif nodeHeight > machine.heightLockHeight then
+                        color = TerraFarm.colorAboveLockedHeight
+                    end
+
+                    Utils.renderTextAtWorldPosition(abs, height+1, ord, ".", getCorrectTextSize(0.03), 0, color)
+                end
+            end
+        end
     end
 end
 

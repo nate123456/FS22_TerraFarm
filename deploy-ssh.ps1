@@ -1,25 +1,18 @@
-# Load .env file into environment variables
-$envFile = ".env"
-if (!(Test-Path $envFile)) {
-    Write-Host "No .env file found. Exiting..."
+# Check if the required arguments are passed
+if ($args.Count -lt 4) {
+    Write-Host "Usage: script.ps1 <SSH_IP> <SSH_USER> <REMOTE_PATH> <DEST_FOLDER_NAME>"
     exit 1
 }
 
-# Read each line of the .env file and set it as an environment variable
-Get-Content $envFile | ForEach-Object {
-    if ($_ -match '^\s*([a-zA-Z_]+)\s*=\s*"?([^"]+)"?\s*$') {
-        [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2])
-    }
-}
+# Assign the CLI arguments to variables
+$sshIP = $args[0]
+$sshUser = $args[1]
+$remotePath = $args[2]
+$destFolderName = $args[3]
 
-# Access SSH and destination environment variables
-$sshIP = $env:SSH_IP
-$sshUser = $env:SSH_USER
-$remotePath = $env:REMOTE_PATH
-$destFolderName = $env:DEST_FOLDER_NAME
-
+# Validate that all arguments are provided
 if (-not $sshIP -or -not $sshUser -or -not $remotePath -or -not $destFolderName) {
-    Write-Host "One or more required environment variables are missing. Exiting..."
+    Write-Host "Error: All four arguments (SSH_IP, SSH_USER, REMOTE_PATH, DEST_FOLDER_NAME) are required."
     exit 1
 }
 
@@ -45,7 +38,7 @@ Write-Host "Running SCP command: $scpCommand"
 
 try {
     # Create remote directory if it doesn't exist
-    $createDirCommand = "ssh $sshUser@$sshIP 'rm -rf ${remoteDestPath} && mkdir ${remoteDestPath}'"
+    $createDirCommand = "ssh $sshUser@$sshIP 'rm -rf ${remoteDestPath} && mkdir -p ${remoteDestPath}'"
     Write-Host "Recreating mod directory: $createDirCommand"
     Invoke-Expression $createDirCommand
 
